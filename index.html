@@ -1643,7 +1643,7 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
     <header class="site-header">
       <div class="wrap">
         <a class="logo-chip" href="#/" aria-label="Home">
-          <img src="${window.ZK_LOGO_MARK}" alt="ZK — Zeliha Kaner">
+          <img src="${window.ZK_LOGO_MARK}" alt="ZK — Zeliha Kaner" width="128" height="128">
         </a>
         <button class="nav-toggle" id="nav-toggle" aria-label="Menu">☰</button>
         <nav class="main-nav" id="main-nav">
@@ -1664,7 +1664,7 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
     return `
     <footer class="site-footer">
       <div class="wrap">
-        <span class="footer-chip"><img src="${window.ZK_LOGO_MARK}" alt="ZK"></span>
+        <span class="footer-chip"><img src="${window.ZK_LOGO_MARK}" alt="ZK" width="128" height="128" loading="lazy" decoding="async"></span>
         <p>© ${new Date().getFullYear()} ${esc(DATA.personal_info.name)} — ${esc(L(DATA.site.footer_note))}</p>
         <div class="footer-social">
           <a href="${esc(DATA.contact.linkedin)}" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.2 8h4.6v14H.2V8zm7.6 0h4.4v1.9h.1c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.4 3 5.4 6.9V22h-4.6v-6.6c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5V22H7.8V8z"/></svg></a>
@@ -1761,7 +1761,7 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
   function inlineImg(key, alt) {
     const src = (window.ZK_PHOTOS || {})[key];
     if (!src) return "";
-    return `<span class="inline-shot"><img src="${src}" alt="${esc(alt || "")}" loading="lazy"></span>`;
+    return `<span class="inline-shot"><img src="${src}" alt="${esc(alt || "")}" loading="lazy" decoding="async"></span>`;
   }
   function tickerBlock() {
     const w = T().tickerWords;
@@ -1774,7 +1774,7 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
     const p = t.introParts;
     return `
     <section class="section intro-tell" id="sec-intro"><div class="wrap">
-      <img class="intro-brand reveal" src="${window.ZK_LOGO_LOCKUP}" alt="Zeliha Kaner — ZE.KA">
+      <img class="intro-brand reveal" src="${window.ZK_LOGO_LOCKUP}" alt="Zeliha Kaner — ZE.KA" width="900" height="900" loading="lazy" decoding="async">
       <div class="tell reveal">
         ${p[0]}
         ${p[1]}
@@ -1802,11 +1802,11 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
         <div class="hero-visual">
           ${(DATA.profile_image || (window.ZK_PHOTOS && window.ZK_PHOTOS.hero))
             ? `<figure class="hero-photo rise" style="--d:220ms">
-                 <img src="${DATA.profile_image ? esc(DATA.profile_image) : window.ZK_PHOTOS.hero}" alt="${esc(DATA.personal_info.name)}">
+                 <img src="${DATA.profile_image ? esc(DATA.profile_image) : window.ZK_PHOTOS.hero}" alt="${esc(DATA.personal_info.name)}" width="800" height="800">
                  <span class="photo-ring" aria-hidden="true"></span>
                  <figcaption class="photo-badge"><span class="dot-live"></span>${t.open2work}</figcaption>
                </figure>`
-            : `<img class="hero-lockup rise" style="--d:220ms" src="${window.ZK_LOGO_LOCKUP}" alt="Zeliha Kaner — Software Engineer | AI & Data Specialist">`}
+            : `<img class="hero-lockup rise" style="--d:220ms" src="${window.ZK_LOGO_LOCKUP}" alt="Zeliha Kaner — Software Engineer | AI & Data Specialist" width="900" height="900">`}
         </div>
       </div>
       <div class="scroll-cue" aria-hidden="true"><span></span></div>
@@ -1905,7 +1905,7 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
         <h2>${esc(L(p.title))}</h2>
         <div class="pill-row" style="margin-top:14px">${(p.tags || []).map(x => `<span class="pill solid">${esc(x)}</span>`).join("")}</div>
       </div>
-      ${p.image ? `<div class="detail-media reveal"><img src="${esc(p.image)}" alt="${esc(L(p.title))}"></div>` : ""}
+      ${p.image ? `<div class="detail-media reveal"><img src="${esc(p.image)}" alt="${esc(L(p.title))}" width="1200" height="675" loading="lazy" decoding="async"></div>` : ""}
       <div class="detail-grid">
         <div class="card block reveal"><h3>${t.objective}</h3><p>${esc(L(p.objective))}</p></div>
         <div class="card block reveal"><h3>${t.what}</h3><p>${esc(L(p.what_i_did))}</p></div>
@@ -1925,7 +1925,7 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
       <a class="back-link" href="#/blog">${t.back}</a>
       <span class="post-date" style="display:block;margin-top:18px">${esc(fmtDate(p.date))}</span>
       <h1 class="post-title">${esc(p.title)}</h1>
-      ${p.cover ? `<div class="detail-media reveal"><img src="${esc(p.cover)}" alt=""></div>` : ""}
+      ${p.cover ? `<div class="detail-media reveal"><img src="${esc(p.cover)}" alt="" width="1200" height="675" loading="lazy" decoding="async"></div>` : ""}
       <div class="card block reveal detail-body">${paragraphs(p.body)}</div>
     </div></section>`;
   }
@@ -1953,9 +1953,9 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
       <div class="about-grid">
         <div class="about-sticky"><div class="card profile-card">
           ${(DATA.profile_image)
-            ? `<img class="profile-photo" src="${esc(DATA.profile_image)}" alt="${esc(DATA.personal_info.name)}">`
+            ? `<img class="profile-photo" src="${esc(DATA.profile_image)}" alt="${esc(DATA.personal_info.name)}" width="800" height="800" loading="lazy" decoding="async">`
             : (inline
-                ? `<div class="profile-mark"><img src="${window.ZK_LOGO_MARK}" alt="ZK"></div>`
+                ? `<div class="profile-mark"><img src="${window.ZK_LOGO_MARK}" alt="ZK" width="128" height="128" loading="lazy" decoding="async"></div>`
                 : `<div class="profile-photo placeholder">${esc(initials)}</div>`)}
           <h3>${esc(DATA.personal_info.name)}</h3>
           <div class="role">${esc(L(DATA.site.hero_role))}</div>
@@ -2090,7 +2090,7 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
     if (SS.getItem("zk-admin") !== "1") {
       return `
       <div id="gate"><div class="fcard">
-        <img src="${window.ZK_LOGO_LOCKUP}" alt="Zeliha Kaner">
+        <img src="${window.ZK_LOGO_LOCKUP}" alt="Zeliha Kaner" width="900" height="900" loading="lazy" decoding="async">
         <h3 style="margin-bottom:4px">Yönetim Paneli</h3>
         <p class="hint" style="margin-bottom:12px">Bu sayfa yalnızca site sahibine aittir.</p>
         <input type="password" id="gate-pass" placeholder="Şifre" autocomplete="current-password">
@@ -2254,7 +2254,7 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
         <div class="fcard"><h3>Profil fotoğrafı & CV</h3>
           <button class="mini add" id="pick-profile">📷 Profil fotoğrafı yükle</button>
           <button class="mini del" id="clear-profile" style="margin-left:8px">Kaldır</button>
-          <div>${AD.profile_image ? `<img class="thumb" src="${AD.profile_image}">` : `<p class="hint">Fotoğraf yok — sitede baş harfleriniz görünür.</p>`}</div>
+          <div>${AD.profile_image ? `<img class="thumb" src="${AD.profile_image}" alt="" width="90" height="90" loading="lazy" decoding="async">` : `<p class="hint">Fotoğraf yok — sitede baş harfleriniz görünür.</p>`}</div>
           <label>CV (PDF)</label>
           <button class="mini add" id="pick-cv">📄 CV PDF yükle</button>
           ${AD.cv_file ? `<button class="mini del" id="clear-cv" style="margin-left:8px">Kaldır</button>` : ""}
@@ -2278,7 +2278,7 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
           ${F("Etiketler (virgülle)", (pr.tags || []).join(", "), `__tags.${i}`)}
           ${F("Proje linki (opsiyonel)", pr.link || "", `projects.${i}.link`)}
           <button class="mini add" data-img-proj="${i}">🖼️ Görsel yükle</button>
-          ${pr.image ? `<button class="mini del" data-imgdel-proj="${i}" style="margin-left:8px">Görseli kaldır</button><div><img class="thumb" src="${pr.image}"></div>` : `<p class="hint">Görsel yok</p>`}
+          ${pr.image ? `<button class="mini del" data-imgdel-proj="${i}" style="margin-left:8px">Görseli kaldır</button><div><img class="thumb" src="${pr.image}" alt="" width="90" height="90" loading="lazy" decoding="async"></div>` : `<p class="hint">Görsel yok</p>`}
         </div>`).join("") +
         `<button class="mini add" id="add-proj" style="padding:12px 20px">＋ Yeni proje ekle</button>`;
       bindInputs(p);
@@ -2473,7 +2473,7 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
     panel.className = "chat-panel";
     panel.innerHTML = `
       <div class="chat-head">
-        <img src="${window.ZK_LOGO_MARK}" alt="">
+        <img src="${window.ZK_LOGO_MARK}" alt="" width="128" height="128" loading="lazy" decoding="async">
         <div><h4>ZK Assist</h4><span id="chat-sub"></span></div>
       </div>
       <div class="chat-log" id="chat-log"></div>
@@ -2645,6 +2645,11 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
   
   const REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function runWhenIdle(fn) {
+    if ("requestIdleCallback" in window) window.requestIdleCallback(fn, { timeout: 1200 });
+    else setTimeout(fn, 0);
+  }
+
   function mountMarquee() {
     const track = document.getElementById("proj-track");
     const box = document.getElementById("proj-marquee");
@@ -2781,7 +2786,9 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
     }, 2600);
   }
 
+  let renderVersion = 0;
   function render() {
+    const thisRender = ++renderVersion;
     applyTheme();
     const { name: r, param } = routeParts();
     const isAdmin = r === "zk-panel-2026";
@@ -2839,7 +2846,6 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
         });
         bindContact();
       }
-      mountChat();
       if (VIEW === "main") startRoleRotation(); else clearInterval(roleTimer);
 
       if (VIEW === "main") {
@@ -2856,8 +2862,15 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
       }
     }
 
-    observeReveals();
-    if (!isAdmin && VIEW === "main" && rebuiltMain) { mountMarquee(); mountScrollSpy(); }
+    runWhenIdle(() => {
+      if (thisRender !== renderVersion) return;
+      mountChat();
+      observeReveals();
+      if (!isAdmin && VIEW === "main" && rebuiltMain && document.getElementById("sec-home")) {
+        mountMarquee();
+        mountScrollSpy();
+      }
+    });
   }
 
   window.addEventListener("hashchange", render);
