@@ -1,0 +1,5 @@
+/about.html      /#/about     301
+/projects.html   /#/projects  301
+/blog.html       /#/blog      301
+/admin.html      /#/admin     301
+/*               /index.html  200
