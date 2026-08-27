@@ -161,26 +161,6 @@ button { font-family: inherit; cursor: pointer; }
 .bento .span-4 { grid-column: span 4; }
 
 .project-card { display: flex; flex-direction: column; overflow: hidden; }
-.project-media {
-  height: 210px; position: relative; overflow: hidden;
-  border-bottom: 1px solid rgba(173,181,189,0.4);
-  background: linear-gradient(135deg, var(--chip-bg) 0%, var(--bg) 60%);
-}
-.project-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
-.project-card:hover .project-media img { transform: scale(1.04); }
-.project-media .placeholder {
-  position: absolute; inset: 0; display: grid; place-items: center;
-}
-.generated-cover { position: relative; overflow: hidden; display: grid; place-items: center; background: linear-gradient(135deg, var(--chip-bg), var(--chip-bg-2) 56%, var(--bg)); }
-.generated-cover.cover-data { background: linear-gradient(145deg, var(--chip-bg-2), var(--bg) 52%, var(--chip-bg)); }
-.generated-cover.cover-vision { background: linear-gradient(125deg, var(--chip-bg-3), var(--chip-bg) 55%, var(--surface)); }
-.generated-cover.cover-ai { background: linear-gradient(155deg, var(--chip-bg), var(--surface) 48%, var(--chip-bg-2)); }
-.generated-cover.cover-industry { background: linear-gradient(135deg, var(--bg), var(--chip-bg-3) 58%, var(--chip-bg)); }
-.generated-cover::before, .generated-cover::after { content: ""; position: absolute; border: 1px solid var(--accent); border-radius: 50%; opacity: .16; }
-.generated-cover::before { width: 180px; height: 180px; left: -55px; bottom: -105px; }
-.generated-cover::after { width: 120px; height: 120px; right: -35px; top: -65px; }
-.generated-cover svg { width: 66px; height: 66px; color: var(--accent); filter: drop-shadow(0 10px 18px rgba(111,91,163,.22)); }
-.generated-cover .cover-label { position: absolute; left: 18px; bottom: 14px; max-width: calc(100% - 36px); color: var(--heading); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .project-body { padding: 26px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 .project-body h3 { font-size: 1.28rem; font-weight: 700; }
 .case-row { font-size: 0.94rem; color: var(--muted); }
@@ -246,8 +226,6 @@ button { font-family: inherit; cursor: pointer; }
 
 .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
 .post-card { overflow: hidden; display: flex; flex-direction: column; cursor: pointer; }
-.post-cover { height: 190px; background: linear-gradient(135deg, var(--chip-bg), var(--bg)); border-bottom: 1px solid rgba(173,181,189,.4); }
-.post-cover img { width: 100%; height: 100%; object-fit: cover; }
 .post-body { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
 .post-date { color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
 .post-body h3 { font-size: 1.2rem; }
@@ -455,10 +433,6 @@ body.admin-mode::before, body.admin-mode::after { display: none !important; }
 .pill.tint1 { background: var(--chip-bg-2); border-color: rgba(107,90,153,.35); color: var(--chip-text-2); }
 .pill.tint2 { background: var(--chip-bg-3); border-color: rgba(92,74,138,.3); color: var(--chip-text-3); }
 
-.post-cover.grad0 { background: linear-gradient(135deg, var(--chip-bg), var(--chip-bg-2) 60%, var(--bg)); }
-.post-cover.grad1 { background: linear-gradient(135deg, var(--chip-bg-2), var(--chip-bg) 60%, var(--bg)); }
-.post-cover.grad2 { background: linear-gradient(135deg, var(--chip-bg-3), var(--chip-bg) 60%, var(--bg)); }
-
 .site-footer { background: var(--deep); border-top: none; margin-top: 60px; }
 .site-footer .wrap { padding: 40px 28px; }
 .site-footer p, .site-footer a { color: #ddd0fa; }
@@ -531,7 +505,6 @@ body.admin-mode::before, body.admin-mode::after { display: none !important; }
 .project-card:hover .card-go, .post-card:hover .card-go { background: var(--accent); border-color: var(--accent); color: #fff; transform: translate(2px, -2px); }
 .card-go:hover { background: var(--accent-hover) !important; border-color: var(--accent-hover) !important; }
 .post-card { position: relative; }
-.post-cover { display: block; }
 .post-body h3 a:hover, .project-body h3 a:hover { color: var(--accent-hover); }
 
 .back-link { color: var(--accent); font-weight: 700; font-size: .92rem; }
@@ -743,7 +716,6 @@ main { animation: pagein .32s ease both; }
 .marquee.grabbing { cursor: grabbing; }
 .marquee-track { display: flex; gap: 22px; width: max-content; will-change: transform; }
 .marquee .project-card { width: 400px; flex: 0 0 400px; }
-.marquee .project-media { height: 176px; }
 .marquee.static { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .marquee.static .marquee-track { transform: none !important; }
 
@@ -1074,18 +1046,18 @@ main { animation: pagein .32s ease both; }
   "experience": [
     {
       "role": {
-        "en": "AI Engineer",
-        "tr": "Yapay Zeka Mühendisi"
+        "en": "AI & Intelligent Automation Intern",
+        "tr": "Yapay Zeka & Akıllı Otomasyon Stajyeri"
       },
-      "company": "Öztaş Global Metal",
+      "company": "Öztaş Metal Grup",
       "location": {
-        "en": "Turkey",
-        "tr": "Türkiye"
+        "en": "Manisa, Türkiye",
+        "tr": "Manisa, Türkiye"
       },
-      "period": "07.2026 – Devam ediyor",
+      "period": "08.2026 – Devam ediyor",
       "focus": {
-        "en": "AI Engineering & Intelligent Business Automation — IT & Digitalization Dept.",
-        "tr": "AI Engineering & Intelligent Business Automation — Bilgi İşlem ve Dijitalleşme Departmanı"
+        "en": "Developing AI solutions for manufacturing and IT processes at Öztaş Holding",
+        "tr": "Öztaş Holding'de üretim ve BT süreçlerine yönelik yapay zeka çözümleri geliştirme"
       },
       "achievements": [
         {
@@ -1095,6 +1067,10 @@ main { animation: pagein .32s ease both; }
         {
           "en": "Decision Support: Building a GNN-based decision support system to assist the production planning process (ongoing).",
           "tr": "Karar Destek: Üretim planlama sürecine yardımcı olacak GNN ile geliştirilmiş bir karar destek sistemi üzerinde çalışıyorum (devam ediyor)."
+        },
+        {
+          "en": "AI & Data Technologies: Using Retrieval-Augmented Generation (RAG) and Microsoft SQL Server.",
+          "tr": "Yapay Zeka & Veri Teknolojileri: Almayla Artırılmış Üretim (RAG) ve Microsoft SQL Server kullanıyorum."
         }
       ]
     },
@@ -1236,16 +1212,16 @@ main { animation: pagein .32s ease both; }
       },
       "span": "wide",
       "objective": {
-        "en": "Predict when factory machinery will fail by analyzing real-time sensor variables and detect defected products on the production line.",
-        "tr": "Gerçek zamanlı sensör değişkenlerini analiz ederek fabrika makinelerinin ne zaman arızalanacağını öngörmek ve üretim hattındaki kusurlu ürünleri tespit etmek."
+        "en": "Build an IoT-based predictive maintenance platform that continuously collects temperature, vibration, and pressure measurements from industrial machinery and uses them to anticipate failures before they interrupt production.",
+        "tr": "Endüstriyel makinelerden gelen sıcaklık, titreşim ve basınç ölçümlerini sürekli toplayan ve bu verilerle arızaları üretimi kesintiye uğratmadan önce öngörmeyi amaçlayan IoT tabanlı bir kestirimci bakım platformu geliştirmek."
       },
       "what_i_did": {
-        "en": "Handled multivariate industrial sensor data (temperature, vibration, pressure) to build time-series analysis and classification pipelines utilizing Random Forest, XGBoost, and LSTM networks.",
-        "tr": "Çok değişkenli endüstriyel sensör verilerini (sıcaklık, titreşim, basınç) işleyerek Random Forest, XGBoost ve LSTM ağlarıyla zaman serisi analizi ve sınıflandırma pipeline'ları kurdum."
+        "en": "Collected live sensor readings through MQTT, organized the time-series data in InfluxDB, and prepared multivariate analysis and classification pipelines in Python. I evaluated Random Forest, XGBoost, and LSTM approaches across temperature, vibration, and pressure signals to identify anomalous operating patterns and estimate machine-failure risk.",
+        "tr": "Canlı sensör ölçümlerini MQTT üzerinden topladım, zaman serisi verilerini InfluxDB'de düzenledim ve Python ile çok değişkenli analiz ve sınıflandırma pipeline'ları hazırladım. Anormal çalışma örüntülerini belirlemek ve makine arızası riskini tahmin etmek için sıcaklık, titreşim ve basınç sinyalleri üzerinde Random Forest, XGBoost ve LSTM yaklaşımlarını değerlendirdim."
       },
       "core_features": {
-        "en": "Integrated a live monitoring dashboard (built via Streamlit/Power BI) visualizing exact risk thresholds for factory operators.",
-        "tr": "Fabrika operatörleri için risk eşiklerini görselleştiren canlı bir izleme paneli (Streamlit/Power BI) entegre ettim."
+        "en": "Connected the analytics pipeline to live monitoring dashboards built with Grafana and Streamlit/Power BI, giving factory operators a clear view of sensor trends, detected anomalies, and machine-risk thresholds from one operational interface.",
+        "tr": "Analiz pipeline'ını Grafana ve Streamlit/Power BI ile hazırlanan canlı izleme panellerine bağladım; fabrika operatörlerinin sensör eğilimlerini, tespit edilen anomalileri ve makine risk eşiklerini tek bir operasyon ekranından izlemesini sağladım."
       },
       "tags": [
         "Python",
@@ -1259,8 +1235,8 @@ main { animation: pagein .32s ease both; }
       "image": "",
       "link": "",
       "details": {
-        "en": "",
-        "tr": ""
+        "en": "The platform combines industrial IoT data collection with predictive analytics. Temperature, vibration, and pressure readings arrive through MQTT and are retained in InfluxDB as time-series data, creating a continuous view of machine operating conditions.\n\nIn Python, the sensor variables are processed for time-series analysis and failure-risk classification. Random Forest, XGBoost, and LSTM models provide alternative ways to capture anomalous behavior and patterns that may precede a malfunction. The resulting indicators and risk thresholds are presented through Grafana and Streamlit/Power BI dashboards so operators can monitor equipment health and act before an unplanned stoppage.",
+        "tr": "Platform, endüstriyel IoT veri toplama sürecini kestirimci analizle birleştirir. Sıcaklık, titreşim ve basınç ölçümleri MQTT üzerinden alınır ve zaman serisi olarak InfluxDB'de saklanır; böylece makinelerin çalışma koşulları sürekli izlenebilir.\n\nPython tarafında sensör değişkenleri zaman serisi analizi ve arıza riski sınıflandırması için işlenir. Random Forest, XGBoost ve LSTM modelleri, anormal davranışları ve olası bir arızadan önce ortaya çıkabilecek örüntüleri yakalamak için farklı yaklaşımlar sunar. Üretilen göstergeler ve risk eşikleri Grafana ile Streamlit/Power BI panellerinde sunularak operatörlerin ekipman sağlığını izlemesine ve plansız duruştan önce aksiyon almasına yardımcı olur."
       }
     },
     {
@@ -1271,16 +1247,16 @@ main { animation: pagein .32s ease both; }
       },
       "span": "normal",
       "objective": {
-        "en": "Automate the identification and sorting of defective or flawed items moving along a production line via advanced visual inspection.",
-        "tr": "Üretim hattında ilerleyen kusurlu ürünlerin gelişmiş görsel denetimle otomatik tespiti ve ayrıştırılması."
+        "en": "Automate production-line quality control with a deep-learning system that analyzes products in real time from camera feeds, identifies visible defects, and supports separating faulty items from the line.",
+        "tr": "Ürünleri kamera akışlarından gerçek zamanlı analiz eden, görünür kusurları tespit eden ve hatalı ürünlerin üretim hattından ayrılmasını destekleyen derin öğrenme tabanlı bir kalite kontrol sistemi geliştirmek."
       },
       "what_i_did": {
-        "en": "Trained custom real-time Object Detection models using YOLOv8 and OpenCV to spot flaws like missing solder points on Printed Circuit Boards (PCBs) or structural tears in textile fabrics.",
-        "tr": "YOLOv8 ve OpenCV ile gerçek zamanlı nesne tespit modelleri eğittim; PCB'lerde eksik lehim noktaları veya tekstil kumaşlarındaki yapısal yırtıklar gibi kusurları yakaladım."
+        "en": "Built the visual inspection pipeline in Python with OpenCV and trained custom YOLOv8 real-time object-detection models. The defect scenarios included missing solder points on printed circuit boards (PCBs) and structural tears in textile fabrics, covering two distinct manufacturing inspection use cases.",
+        "tr": "Görsel denetim pipeline'ını Python ve OpenCV ile kurdum, özel YOLOv8 gerçek zamanlı nesne tespit modelleri eğittim. Kusur senaryoları, baskılı devre kartlarındaki (PCB) eksik lehim noktalarını ve tekstil kumaşlarındaki yapısal yırtıkları kapsayarak iki farklı üretim denetimi kullanımını ele aldı."
       },
       "core_features": {
-        "en": "Optimized inference pipelines for high-framerate camera streams and containerized the application for seamless edge-device deployment.",
-        "tr": "Yüksek kare hızlı kamera akışları için çıkarım pipeline'larını optimize ettim ve uygulamayı uç cihazlara sorunsuz dağıtım için Docker ile konteynerleştirdim."
+        "en": "Optimized the inference flow for high-frame-rate camera streams so defects could be evaluated during production, then containerized the application with Docker to make deployment to edge or line-side environments consistent and repeatable.",
+        "tr": "Kusurların üretim sırasında değerlendirilebilmesi için çıkarım akışını yüksek kare hızlı kamera görüntülerine göre optimize ettim; ardından uç veya hat yanı ortamlara tutarlı ve tekrarlanabilir dağıtım için uygulamayı Docker ile konteynerleştirdim."
       },
       "tags": [
         "Python",
@@ -1292,8 +1268,8 @@ main { animation: pagein .32s ease both; }
       "image": "",
       "link": "",
       "details": {
-        "en": "",
-        "tr": ""
+        "en": "This automation project applies computer vision directly to manufacturing quality control. OpenCV handles the real-time image stream, while custom YOLOv8 models locate and classify defects such as missing PCB solder points and tears in textile material. The output is designed to support the identification and sorting of defective products without relying solely on manual visual inspection.\n\nBecause the system targets live production conditions, the inference pipeline was optimized for high-frame-rate camera input. Docker packaging provides a consistent runtime for deployment near the production line or on an edge device, keeping the Python, OpenCV, and deep-learning components portable as a single application.",
+        "tr": "Bu otomasyon projesi, bilgisayarlı görüyü doğrudan üretim kalite kontrolüne uygular. OpenCV gerçek zamanlı görüntü akışını işlerken özel YOLOv8 modelleri PCB'lerdeki eksik lehim noktaları ve tekstil malzemesindeki yırtıklar gibi kusurları konumlandırıp sınıflandırır. Çıktı, yalnızca manuel görsel kontrole bağlı kalmadan hatalı ürünlerin belirlenmesini ve ayrıştırılmasını destekleyecek biçimde tasarlanmıştır.\n\nSistem canlı üretim koşullarını hedeflediği için çıkarım pipeline'ı yüksek kare hızlı kamera girdisine göre optimize edilmiştir. Docker paketlemesi; Python, OpenCV ve derin öğrenme bileşenlerini tek bir uygulama halinde taşınabilir tutarak üretim hattı yakınında veya uç cihazda tutarlı bir çalışma ortamı sağlar."
       }
     },
     {
@@ -1304,16 +1280,16 @@ main { animation: pagein .32s ease both; }
       },
       "span": "normal",
       "objective": {
-        "en": "Automate decision-support systems and prioritize workflow urgency based on large-scale clinical and operational datasets.",
-        "tr": "Büyük ölçekli klinik ve operasyonel veri kümelerine dayanarak karar destek sistemlerini otomatikleştirmek ve iş akışı aciliyetini önceliklendirmek."
+        "en": "Develop an AI-supported decision system for emergency departments that analyzes historical medical data, generates a patient risk score, and helps prioritize triage urgency. The work was carried out as a graduation project with TÜBİTAK scope.",
+        "tr": "Geçmiş tıbbi verileri analiz eden, hasta için risk skoru üreten ve acil servis triyaj önceliğinin belirlenmesini destekleyen yapay zekâ tabanlı bir karar sistemi geliştirmek. Çalışma, bitirme projesi ve TÜBİTAK kapsamı çerçevesinde yürütüldü."
       },
       "what_i_did": {
-        "en": "Engineered a robust AI system using the MIMIC-IV-ED dataset that achieved an official 59.52% triage priority classification accuracy.",
-        "tr": "MIMIC-IV-ED veri kümesini kullanarak %59,52 resmi triyaj öncelik sınıflandırma doğruluğuna ulaşan sağlam bir yapay zeka sistemi geliştirdim."
+        "en": "Prepared and analyzed the MIMIC-IV-ED emergency-department dataset with Pandas, then built and evaluated Scikit-learn models in Python for triage-priority classification and risk scoring. The resulting classification system achieved a documented accuracy of 59.52% and was exposed through a Flask API for application integration.",
+        "tr": "MIMIC-IV-ED acil servis veri kümesini Pandas ile hazırlayıp analiz ettim; ardından triyaj önceliği sınıflandırması ve risk skorlama için Python ve Scikit-learn ile modeller geliştirip değerlendirdim. Ortaya çıkan sınıflandırma sistemi belgelenmiş %59,52 doğruluk oranına ulaştı ve uygulama entegrasyonu için Flask API üzerinden sunuldu."
       },
       "core_features": {
-        "en": "Integrated a Large Language Model (LLM) architecture via LangChain to construct a Retrieval-Augmented Generation (RAG) assistant, allowing operators to query system status using natural language.",
-        "tr": "LangChain üzerinden LLM mimarisi entegre ederek operatörlerin sisteme doğal dille soru sorabildiği bir RAG (Retrieval-Augmented Generation) asistanı kurdum."
+        "en": "Added a LangChain-based Large Language Model layer and a Retrieval-Augmented Generation (RAG) assistant so authorized users could query relevant system information in natural language alongside the model's structured triage-priority and risk outputs.",
+        "tr": "Modelin yapılandırılmış triyaj önceliği ve risk çıktılarının yanında, yetkili kullanıcıların ilgili sistem bilgilerini doğal dille sorgulayabilmesi için LangChain tabanlı bir LLM katmanı ve RAG (Retrieval-Augmented Generation) asistanı ekledim."
       },
       "tags": [
         "Python",
@@ -1326,8 +1302,8 @@ main { animation: pagein .32s ease both; }
       "image": "",
       "link": "",
       "details": {
-        "en": "",
-        "tr": ""
+        "en": "Created as a graduation project within TÜBİTAK scope, the system focuses on decision support for emergency-department triage. Historical clinical records from MIMIC-IV-ED are prepared with Pandas and analyzed in Python; Scikit-learn models then classify triage priority and produce a risk-oriented output to help order urgent cases. The evaluated model reached 59.52% classification accuracy.\n\nA Flask API makes the model available to an application layer instead of leaving it as an isolated experiment. The project also includes a LangChain-based LLM and Retrieval-Augmented Generation assistant, enabling natural-language access to relevant system information while preserving the core machine-learning output as the basis for triage support.",
+        "tr": "TÜBİTAK kapsamındaki bir bitirme projesi olarak geliştirilen sistem, acil servis triyajında karar desteğine odaklanır. MIMIC-IV-ED veri kümesindeki geçmiş klinik kayıtlar Pandas ile hazırlanıp Python'da analiz edilir; Scikit-learn modelleri triyaj önceliğini sınıflandırır ve acil vakaların sıralanmasına yardımcı olacak risk odaklı bir çıktı üretir. Değerlendirilen model %59,52 sınıflandırma doğruluğuna ulaşmıştır.\n\nFlask API, modeli bağımsız bir deney olarak bırakmak yerine uygulama katmanına açar. Projede ayrıca LangChain tabanlı bir LLM ve Retrieval-Augmented Generation asistanı bulunur; bu katman, triyaj desteğinin temelinde makine öğrenmesi çıktısını korurken ilgili sistem bilgilerine doğal dille erişim sağlar."
       }
     },
     {
@@ -1338,16 +1314,16 @@ main { animation: pagein .32s ease both; }
       },
       "span": "full",
       "objective": {
-        "en": "Discover bottlenecks and map digital twins of organizational or manufacturing event logs to identify automation candidates.",
-        "tr": "Organizasyonel veya üretim olay kayıtlarının dijital ikizlerini haritalayarak darboğazları keşfetmek ve otomasyon adaylarını belirlemek."
+        "en": "Reconstruct organizational and manufacturing workflows from event logs, create evidence-based digital process twins, and use them to uncover bottlenecks, deviations, and steps that are suitable candidates for automation or optimization.",
+        "tr": "Organizasyonel ve üretim iş akışlarını olay kayıtlarından yeniden oluşturmak, kanıta dayalı dijital süreç ikizleri çıkarmak ve bunlar üzerinden darboğazları, sapmaları ve otomasyon ya da optimizasyona uygun adımları belirlemek."
       },
       "what_i_did": {
-        "en": "Developed process extraction and workflow alignment models in Python using the 'pm4py' library and Celonis to visualize process friction and prepare detailed automated bottleneck analysis reports.",
-        "tr": "pm4py kütüphanesi ve Celonis ile Python'da süreç çıkarımı ve iş akışı hizalama modelleri geliştirerek süreç sürtünmesini görselleştirdim ve detaylı otomatik darboğaz analiz raporları hazırladım."
+        "en": "Used Python and the pm4py library to extract process models from event-log data and compare observed execution paths with expected workflows. I complemented this work in Celonis to visualize process friction, inspect alignment and deviations, and turn the analysis into detailed automated bottleneck reports.",
+        "tr": "Olay kaydı verilerinden süreç modelleri çıkarmak ve gözlenen yürütme yollarını beklenen iş akışlarıyla karşılaştırmak için Python ve pm4py kütüphanesini kullandım. Süreç sürtünmesini görselleştirmek, hizalamayı ve sapmaları incelemek, analizi detaylı otomatik darboğaz raporlarına dönüştürmek için çalışmayı Celonis ile tamamladım."
       },
       "core_features": {
-        "en": "Delivered automated bottleneck analysis reports mapping process friction across event-log digital twins.",
-        "tr": "Olay kaydı dijital ikizleri üzerinde süreç sürtünmesini haritalayan otomatik darboğaz raporları üretti."
+        "en": "Produced repeatable reports that map process friction across event-log digital twins, highlight where cases wait or diverge from the intended flow, and provide a structured basis for evaluating optimization and automation opportunities.",
+        "tr": "Olay kaydı dijital ikizleri üzerindeki süreç sürtünmesini haritalayan, vakaların nerede beklediğini veya hedef akıştan saptığını gösteren ve optimizasyon ile otomasyon fırsatlarını değerlendirmek için yapılandırılmış bir temel sunan tekrarlanabilir raporlar ürettim."
       },
       "tags": [
         "Python",
@@ -1359,8 +1335,8 @@ main { animation: pagein .32s ease both; }
       "image": "",
       "link": "",
       "details": {
-        "en": "",
-        "tr": ""
+        "en": "The project turns raw organizational or manufacturing event logs into a model of how work is actually performed. Using Python and pm4py, recorded activities and execution paths are extracted into process views and aligned with the expected workflow, making hidden deviations and friction points visible. Celonis provides an additional environment for exploring and presenting those process relationships.\n\nThe analysis is delivered through automated bottleneck reports built around the event-log digital twin. These reports identify waiting points, workflow divergence, and recurring friction, then organize the evidence so potential process improvements and automation candidates can be assessed systematically.",
+        "tr": "Proje, ham organizasyon veya üretim olay kayıtlarını işin gerçekte nasıl yürütüldüğünü gösteren bir modele dönüştürür. Python ve pm4py kullanılarak kaydedilen aktiviteler ile yürütme yolları süreç görünümlerine çıkarılır ve beklenen iş akışıyla hizalanır; böylece gizli sapmalar ve sürtünme noktaları görünür hale gelir. Celonis, bu süreç ilişkilerini incelemek ve sunmak için ek bir ortam sağlar.\n\nAnaliz, olay kaydı dijital ikizi etrafında oluşturulan otomatik darboğaz raporlarıyla sunulur. Bu raporlar bekleme noktalarını, iş akışı sapmalarını ve tekrarlayan sürtünmeleri belirler; ardından olası süreç iyileştirmeleri ile otomasyon adaylarının sistematik biçimde değerlendirilebilmesi için kanıtları düzenler."
       }
     }
   ],
@@ -1466,6 +1442,13 @@ main { animation: pagein .32s ease both; }
       "text": {
         "en": "AI graduation project (MIMIC-IV clinical triage) & graduation",
         "tr": "Yapay zeka bitirme projesi (MIMIC-IV klinik triyaj) & mezuniyet"
+      }
+    },
+    {
+      "year": "2026",
+      "text": {
+        "en": "Started AI & Intelligent Automation internship at Öztaş Metal Grup",
+        "tr": "Öztaş Metal Grup'ta AI & Intelligent Automation stajına başladım"
       }
     }
   ],
@@ -1692,28 +1675,6 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
     </footer>`;
   }
 
-  const coverKind = (tags, text) => {
-    const haystack = ((tags || []).join(" ") + " " + (text || "")).toLowerCase();
-    if (/vision|opencv|image|görüntü|cnn|yolo/.test(haystack)) return "vision";
-    if (/llm|rag|nlp|chat|ai|yapay zeka|machine learning|tensorflow|pytorch|gnn/.test(haystack)) return "ai";
-    if (/mqtt|grafana|docker|iot|industrial|automation|endüstri|otomasyon/.test(haystack)) return "industry";
-    return "data";
-  };
-  const coverIcon = kind => ({
-    vision: '<path d="M3 12s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6Z"/><circle cx="12" cy="12" r="2.5"/><path d="M5 4v3M5 4h3M19 4v3M19 4h-3M5 20v-3M5 20h3M19 20v-3M19 20h-3"/>',
-    ai: '<path d="M9 4.5A2.5 2.5 0 0 0 4.5 6v2A3 3 0 0 0 3 13.2 3 3 0 0 0 6 18h3M15 4.5A2.5 2.5 0 0 1 19.5 6v2a3 3 0 0 1 1.5 5.2 3 3 0 0 1-3 4.8h-3M9 4v16M15 4v16M6 9h3M15 9h3M6 15h3M15 15h3"/>',
-    industry: '<path d="M3 21V9l6 3V8l6 4V5h6v16H3Z"/><path d="M7 17h2M12 17h2M17 17h1M18 5V2"/>',
-    data: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"/>'
-  }[kind]);
-  const generatedCover = (tags, title, extraClass = "project-media") => {
-    const kind = coverKind(tags, title);
-    const label = (tags && tags.length ? tags.slice(0, 2).join(" · ") : title);
-    return `<span class="${extraClass} generated-cover cover-${kind}" role="img" aria-label="${esc(title)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${coverIcon(kind)}</svg><span class="cover-label">${esc(label)}</span></span>`;
-  };
-  const mediaBlock = (img, title, tags) => img
-    ? `<div class="project-media"><img src="${esc(img)}" alt="${esc(title)}" loading="lazy"></div>`
-    : generatedCover(tags, title);
-
   const projectCard = (p) => {
     const t = T();
     return `
@@ -1721,7 +1682,6 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
       <a class="card-go" href="#/project/${esc(p.id)}" aria-label="${esc(L(p.title))}">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
       </a>
-      ${mediaBlock(p.image, L(p.title), p.tags)}
       <div class="project-body">
         <h3><a href="#/project/${esc(p.id)}">${esc(L(p.title))}</a></h3>
         <div class="case-row"><strong>${t.objective}</strong>${esc(L(p.objective))}</div>
@@ -1919,7 +1879,6 @@ window.ZK_LOGO_FULL = "data:image/webp;base64,UklGRkKmAABXRUJQVlA4WAoAAAAwAAAAgw
             <a class="card-go" href="#/post/${esc(p.id)}" aria-label="${esc(p.title)}">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
             </a>
-            <a href="#/post/${esc(p.id)}" class="post-cover grad${i % 3}" aria-label="${esc(p.title)}">${p.cover ? `<img src="${esc(p.cover)}" alt="" loading="lazy">` : generatedCover(p.tags, p.title, "post-cover")}</a>
             <div class="post-body">
               <span class="post-date">${esc(fmtDate(p.date))}</span>
               <h3><a href="#/post/${esc(p.id)}">${esc(p.title)}</a></h3><p>${esc(p.excerpt)}</p>
