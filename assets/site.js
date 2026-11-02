@@ -644,8 +644,8 @@
      ========================================================= */
   /* Soft pastel sparkle palette: mint, blush, lavender, butter, peach, sky */
   var SPARK = {
-    light: [[120, 200, 160], [238, 140, 170], [168, 150, 228], [232, 190, 90], [242, 160, 112], [118, 180, 230]],
-    dark: [[170, 230, 200], [248, 182, 204], [200, 188, 245], [246, 220, 150], [250, 196, 160], [170, 210, 245]]
+    light: [[150, 190, 170], [215, 160, 175], [175, 165, 205], [210, 185, 135], [215, 170, 145], [150, 180, 205]],
+    dark: [[190, 222, 205], [236, 196, 208], [205, 198, 232], [232, 214, 170], [236, 205, 182], [190, 210, 230]]
   };
   function sparkPal() { return SPARK[root.getAttribute("data-theme") === "dark" ? "dark" : "light"]; }
   function pick() { var P = sparkPal(); return P[Math.floor(Math.random() * P.length)]; }
@@ -730,8 +730,7 @@
         var x1 = g.a.x + (g.b.x - g.a.x) * g.t, y1 = g.a.y + (g.b.y - g.a.y) * g.t, t0 = Math.max(0, g.t - .3);
         var x0 = g.a.x + (g.b.x - g.a.x) * t0, y0 = g.a.y + (g.b.y - g.a.y) * t0;
         ctx.strokeStyle = rgba(g.c, .18); ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
-        ctx.strokeStyle = rgba(g.c, .95); ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
-        ctx.fillStyle = rgba(col.w, 1); ctx.beginPath(); ctx.arc(x1, y1, 1.6, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = rgba(g.c, .7); ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
       });
       // neurons
       nodes.forEach(function (n) {
@@ -797,7 +796,7 @@
         h = [h[0] - dy / l * o, h[1] + dx / l * o];
       }
       var mx = px - h[0], my = py - h[1], d = Math.hypot(mx, my);
-      if (d < 240 && d > 1) { var f = (1 - d / 240) * 70; h = [h[0] + mx / d * f, h[1] + my / d * f]; }
+      if (d < 260 && d > 1) { var f = (1 - d / 260) * 40; h = [h[0] + mx / d * f, h[1] + my / d * f]; }
       return h;
     }
     function spawn(a, b, dur, opt) {
@@ -808,10 +807,10 @@
       b = b || [W + 60, H * (Math.random() * .85)];
       var c1 = [a[0] + (b[0] - a[0]) * .3 + r(W * .5), a[1] + (b[1] - a[1]) * .3 + r(H * .6)];
       var c2 = [a[0] + (b[0] - a[0]) * .7 + r(W * .5), a[1] + (b[1] - a[1]) * .7 + r(H * .6)];
-      var n = opt.n || (Math.random() < .55 ? 2 : Math.random() < .5 ? 3 : 1);
-      var t0 = performance.now(), d = dur || 2000 + Math.random() * 1400, amp = n > 1 ? 26 + Math.random() * 30 : 0, turns = 3 + Math.random() * 3;
+      var n = 1;
+      var t0 = performance.now(), d = (dur || 2000) * 2.8 + Math.random() * 2500, amp = 18 + Math.random() * 24, turns = 1.5 + Math.random() * 1.5;
       for (var i = 0; i < n; i++) {
-        comets.push({ p: [a, c1, c2, b], t0: t0 + i * 40, dur: d, amp: amp, turns: turns, ph: i * Math.PI * 2 / n, col: pick(), w: 1.4 + Math.random() * 1.2, fade: 1, h: null });
+        comets.push({ p: [a, c1, c2, b], t0: t0 + i * 40, dur: d, amp: amp, turns: turns, ph: i * Math.PI * 2 / n, col: pick(), veil: 34 + Math.random() * 46, w: 1.4 + Math.random() * 1.2, fade: 1, h: null });
       }
       if (!running) { running = true; requestAnimationFrame(loop); }
     }
@@ -828,61 +827,48 @@
     }
     function loop(now) {
       ctx.clearRect(0, 0, W, H);
-      ctx.globalCompositeOperation = dark ? "lighter" : "source-over";
-      ctx.lineCap = "round";
-      var heads = [];
+      ctx.globalCompositeOperation = "source-over";
+      ctx.lineCap = "round"; ctx.lineJoin = "round";
       for (var i = comets.length - 1; i >= 0; i--) {
         var c = comets[i], k = (now - c.t0) / c.dur;
         if (k < 0) continue;
         k = Math.min(1, k);
         var e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, G = c.col;
-        if (k >= 1) c.fade -= .05;
-        var tr = [], span = .24, N = 30;
-        for (var q = 0; q <= N; q++) { var tt = e - span + span * q / N; if (tt >= 0 && tt <= 1) tr.push(pos(c, tt)); }
-        var fa = k >= 1 ? Math.max(c.fade, 0) : 1;
-        // neon: wide soft halo + colour body + white core, in 3 fading chunks
-        if (tr.length > 3) {
-          var CH = 3, per = Math.ceil(tr.length / CH);
-          for (var ch = 0; ch < CH; ch++) {
-            var s0 = ch * per, s1 = Math.min(tr.length - 1, (ch + 1) * per), f = (ch + 1) / CH;
-            if (s1 <= s0) continue;
-            var path = function () { ctx.beginPath(); ctx.moveTo(tr[s0][0], tr[s0][1]); for (var q2 = s0 + 1; q2 <= s1; q2++) ctx.lineTo(tr[q2][0], tr[q2][1]); ctx.stroke(); };
-            ctx.strokeStyle = rgba(G, .12 * f * fa); ctx.lineWidth = c.w * (6 + f * 8); path();
-            ctx.strokeStyle = rgba(G, .75 * f * fa); ctx.lineWidth = c.w * (0.8 + f * 1.8); path();
-            ctx.strokeStyle = rgba(dark ? glow2 : [255, 255, 255], .85 * f * f * fa); ctx.lineWidth = c.w * (0.3 + f * .6); path();
-          }
+        if (k >= 1) c.fade -= .02;
+        var fa = k >= 1 ? Math.max(c.fade, 0) : Math.min(1, k * 6);
+        // sample the visible part of the veil (long, no head)
+        var span = .5, N = 46, pts = [], nrm = [];
+        for (var q = 0; q <= N; q++) {
+          var tt = e - span + span * q / N; if (tt < 0 || tt > 1) continue;
+          var a1 = pos(c, tt), a2 = pos(c, Math.min(1, tt + .004)), dx = a2[0] - a1[0], dy = a2[1] - a1[1], l = Math.hypot(dx, dy) || 1;
+          pts.push([a1[0], a1[1], q / N]); nrm.push([-dy / l, dx / l]);
         }
-        if (k < 1 && tr.length) {
-          var h = tr[tr.length - 1]; c.h = h; heads.push(c);
-          var g = ctx.createRadialGradient(h[0], h[1], 0, h[0], h[1], 26);
-          g.addColorStop(0, rgba(dark ? glow2 : G, 1)); g.addColorStop(.2, rgba(G, .7)); g.addColorStop(1, rgba(G, 0));
-          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(h[0], h[1], 26, 0, Math.PI * 2); ctx.fill();
-          if (Math.random() < .8) sparks.push({ c: Math.random() < .5 ? c.col : pick(), x: h[0], y: h[1], vx: (Math.random() - .5) * 1.6, vy: (Math.random() - .5) * 1.6 + .3, t0: now, life: 500 + Math.random() * 900, r: .6 + Math.random() * 1.6 });
-          if (Math.random() < .25) mesh.poke(h[0], h[1], 60);
+        if (pts.length > 3) {
+          // tulle: a soft wide wash + many fine translucent threads
+          var strands = 9, width = c.veil;
+          for (var sI = -1; sI < strands; sI++) {
+            ctx.beginPath();
+            for (var j = 0; j < pts.length; j++) {
+              var P = pts[j], Nn = nrm[j], tw = Math.sin(P[2] * Math.PI);           // taper at both ends
+              var off = sI < 0 ? 0 : ((sI / (strands - 1)) - .5) * width * tw + Math.sin(P[2] * 9 + now / 900 + sI) * 4 * tw;
+              var x = P[0] + Nn[0] * off, y = P[1] + Nn[1] * off;
+              if (j === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            }
+            if (sI < 0) { ctx.strokeStyle = rgba(G, .07 * fa); ctx.lineWidth = width * .9; }
+            else { ctx.strokeStyle = rgba(G, (.10 + (sI % 3 === 0 ? .08 : 0)) * fa); ctx.lineWidth = sI % 4 === 0 ? 1.4 : .8; }
+            ctx.stroke();
+          }
+          if (Math.random() < .08) mesh.poke(pts[pts.length >> 1][0], pts[pts.length >> 1][1], 50);
         }
         if (k >= 1 && c.fade <= 0) comets.splice(i, 1);
       }
-      // interaction: heads that come close link up and throw sparks
-      for (var a = 0; a < heads.length; a++) for (var b = a + 1; b < heads.length; b++) {
-        var A = heads[a].h, B = heads[b].h, dd = Math.hypot(A[0] - B[0], A[1] - B[1]);
-        if (dd < 110) {
-          var s = 1 - dd / 110;
-          var qx = (A[0] + B[0]) / 2 + (Math.random() - .5) * 30 * s, qy = (A[1] + B[1]) / 2 + (Math.random() - .5) * 30 * s;
-          ctx.strokeStyle = rgba(heads[b].col, s * .3); ctx.lineWidth = 8 * s;
-          ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.quadraticCurveTo(qx, qy, B[0], B[1]); ctx.stroke();
-          ctx.strokeStyle = rgba(heads[a].col, s * .9); ctx.lineWidth = 1 + s * 1.2;
-          ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.quadraticCurveTo(qx, qy, B[0], B[1]); ctx.stroke();
-          if (dd < 40 && Math.random() < .4) burstAt((A[0] + B[0]) / 2, (A[1] + B[1]) / 2, 4);
-        }
-      }
+      // soft click dust (tiny, slow, fading)
       for (var si = sparks.length - 1; si >= 0; si--) {
         var p = sparks[si], al = 1 - (now - p.t0) / p.life;
         if (al <= 0) { sparks.splice(si, 1); continue; }
-        p.x += p.vx; p.y += p.vy; p.vx *= .965; p.vy *= .965;
-        var tw = .5 + .5 * Math.sin(now * .025 + si), C = p.c || glow;
-        ctx.fillStyle = rgba(dark ? glow2 : C, al * (.5 + .5 * tw));
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * (0.5 + al * .6), 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = rgba(C, al * .3); ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3.5, 0, Math.PI * 2); ctx.fill();
+        p.x += p.vx * .5; p.y += p.vy * .5 - .15; p.vx *= .97; p.vy *= .97;
+        ctx.fillStyle = rgba(p.c || glow, al * .35);
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 2.2, 0, Math.PI * 2); ctx.fill();
       }
       if (comets.length || sparks.length) requestAnimationFrame(loop);
       else { running = false; ctx.clearRect(0, 0, W, H); }
@@ -893,12 +879,16 @@
     document.addEventListener("pointerleave", function () { px = py = -1e4; });
     document.addEventListener("pointerdown", function (e) {
       if (REDUCE || e.target.closest("a, button, input, textarea, dialog, [role=button], #heroStage")) return;
-      burstAt(e.clientX, e.clientY, 34); mesh.poke(e.clientX, e.clientY, 140);
-      spawn([e.clientX, e.clientY], [Math.random() < .5 ? -60 : W + 60, H * Math.random()], 1800, { n: 2 });
+      burstAt(e.clientX, e.clientY, 14); mesh.poke(e.clientX, e.clientY, 140);
+      if (!inHero()) spawn([e.clientX, e.clientY], [Math.random() < .5 ? -60 : W + 60, H * Math.random()], 1800, { n: 2 });
     });
+    function inHero() {
+      var h = document.getElementById("hero"); if (!h) return false;
+      var r = h.getBoundingClientRect(); return r.bottom > innerHeight * .45 && r.top < innerHeight * .5;
+    }
     (function ambient() {
-      if (!document.hidden && !REDUCE && root.classList.contains("hero-go")) spawn();
-      setTimeout(ambient, 1300 + Math.random() * 1700);
+      if (!document.hidden && !REDUCE && root.classList.contains("hero-go") && !inHero()) spawn();
+      setTimeout(ambient, 3800 + Math.random() * 3200);
     })();
     return { spawn: spawn, spawnNear: spawnNear, burstAt: burstAt, readColors: readColors };
   })();
@@ -976,7 +966,7 @@
       var r = host.getBoundingClientRect(); W = r.width; H = r.height;
       cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      S = Math.min(W * .44, H * .78); cx = W * .54; cy = H * .5;
+      S = small ? Math.min(W * .4, H * .6) : Math.min(W * .44, H * .46); cx = W * .5; cy = H * .48;
     }
 
     // ---- mouse interaction: hover lights a neuron, click fires the network
@@ -1069,7 +1059,6 @@
         ctx.strokeStyle = rgba(c, .16); ctx.lineWidth = 7; ctx.lineCap = "round"; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
         ctx.strokeStyle = g; ctx.lineWidth = 2.2;
         ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); ctx.stroke();
-        ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x1, y1, 2.2, 0, Math.PI * 2); ctx.fill();
       });
       // nodes, far first
       nodes.slice().sort(function (a, b) { return b.d - a.d; }).forEach(function (n) {
@@ -1131,8 +1120,6 @@
     };
     var after = function () {
       streaks.burstAt(x, y, 18);
-      streaks.spawn([x, y], [innerWidth + 60, innerHeight * Math.random()], 1500);
-      streaks.spawn([x, y], [-60, innerHeight * (.3 + Math.random() * .6)], 1700);
     };
     if (!document.startViewTransition || REDUCE) { apply(); after(); return; }
     var r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
@@ -1164,7 +1151,7 @@
     var heroGo = function () {
       if (root.classList.contains("hero-go")) return;
       root.classList.add("hero-go");
-      setTimeout(function () { streaks.spawn([-60, innerHeight * .8], [innerWidth * .6, -60], 2400); neural.kick(); }, 500);
+      setTimeout(function () { neural.kick(); }, 500);
     };
     // Reduced motion or deep link into the page: no intro.
     var deep = /^#(?!hero$|top$|$)./.test(location.hash);
@@ -1226,8 +1213,6 @@
       line.style.opacity = (1 - seg(p, .84, .94)).toFixed(3);
       if (p > .7 && !introUpdate.shot) {
         introUpdate.shot = 1;
-        streaks.spawn([innerWidth / 2, innerHeight / 2], [-80, innerHeight * .3], 1600, { n: 3 });
-        streaks.spawn([innerWidth / 2, innerHeight / 2], [innerWidth + 80, innerHeight * .7], 1600, { n: 3 });
         streaks.burstAt(innerWidth / 2, innerHeight / 2, 40);
       }
       if (p < .6) introUpdate.shot = 0;

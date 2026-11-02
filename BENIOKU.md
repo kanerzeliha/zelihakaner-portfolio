@@ -1,3 +1,15 @@
+# v14 — Soft renkler, tül gibi ışıklar, iki sütunlu giriş 🤍
+
+- 🤍 **Beyaz + kahve ana renk;** nane, pembe ve karamel artık çok açık, soluk tonlar.
+  Butonlar kahve.
+- 🌫️ **Işık izleri tül gibi:** yuvarlak "kafa" yok; ince ince ipliklerden oluşan, iki ucu
+  incelen yarı saydam geniş bir şerit. 2-3 kat daha yavaş ve daha seyrek.
+  **Sayfanın en üstündeyken (başlık kısmı) hiç akmıyor.**
+- 🧠 **Giriş iki sütun:** başlık, yazı ve kod tamamen solda; sağda ekranın kenarına kadar
+  uzanan büyük sinir ağı şeması (üzerine gel/tıkla ile etkileşimli).
+
+---
+
 # v13 — Beyaz zemin, dolu renk blokları, net kenarlar 🎨
 
 - ⚪ **Zemin bembeyaz** (site varsayılan olarak beyaz açılır; ay ikonuyla koyu moda geçilir).
