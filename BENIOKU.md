@@ -1,3 +1,24 @@
+# v10 — Giriş ekranı, sinir ağı ve ZK logosu 🧠
+
+- 👋 **Hoş geldiniz ekranı:** Site açılınca ZK logosu çizilir, "Hoş geldiniz" harf harf
+  belirir. Aşağı kaydırdıkça harfler dağılır → "Veri. Zekâ. Tasarım." kelimeleri gelir →
+  "Hepsi tek bir sistemde buluşuyor." → ortada bir ışık çizgisi ve **perde gibi açılarak**
+  site görünür. Sağ üstte "Atla" butonu var. (Hareketi azalt ayarında gösterilmez.)
+- 🧠 **Baştaki cisim artık yapay sinir ağı:** katmanlı nöronlar (x → h¹ → h² → h³ → ŷ)
+  yavaşça dönüyor; yeşil sinyaller ileri, pembe sinyaller geri (backprop) akıyor,
+  yoğun bağlantılar kahverengiye dönüyor. Fareyle hafif yön değiştiriyor.
+- ✒️ **ZK logosu:** iletişim bölümünün ortasında büyük, kendini çizen ZK amblemi
+  (devre/nöron uçlarıyla), etrafında dönen yörüngeler; footer'da küçük ZK.
+- ✨ **Yeni animasyonlar:** kaydırma hızına göre akan yazı şeridi, imlece çekilen
+  butonlar, fareyle eğilen kartlar, menünün altında sayfa ilerleme çizgisi,
+  fotoğrafın perdeyle açılması.
+- 🎨 **Daha doğal görünüm:** neon parlamalar ve renkli gölgeler kaldırıldı, parıltı
+  izleri daha seyrek ve yumuşak; palet aynı (kahve · beyaz · yeşil · pembe).
+- ⚡ **Performans:** ağır WebGL kaldırıldı; sinir ağı hafif 2D çizim, telefonda 30 fps,
+  ekran dışındayken duruyor.
+
+---
+
 # v9 — Sıfırdan yeni tasarım: cam, parıltı ve akan kod ✨
 
 Site, tasarlattığın iki videoya göre **baştan** kuruldu.

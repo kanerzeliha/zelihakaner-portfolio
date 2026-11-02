@@ -37,12 +37,28 @@
 
 <div class="grain" aria-hidden="true"></div>
 <div class="cols" aria-hidden="true"></div>
-<canvas id="gl" aria-hidden="true"></canvas>
 <canvas id="streaks" aria-hidden="true"></canvas>
 
+<div class="intro" id="intro" role="region" aria-label="Hoş geldiniz / Welcome">
+  <div class="intro-curtain top" id="curTop"></div>
+  <div class="intro-curtain bot" id="curBot"></div>
+  <div class="intro-line" id="introLine"></div>
+  <div class="intro-stage" id="introStage">
+    <p class="intro-kicker" data-t="introKicker"></p>
+    <div id="introMark"></div>
+    <div class="intro-title" id="introTitle"></div>
+  </div>
+  <div class="intro-words" id="introWords" aria-hidden="true"></div>
+  <p class="intro-final" id="introFinal"></p>
+  <div class="intro-hint" id="introHint"><span class="mouse"></span><span data-t="introHint"></span></div>
+  <button class="intro-skip" type="button" id="introSkip" data-t="introSkip"></button>
+  <div class="intro-bar"><i id="introBar"></i></div>
+</div>
+
 <header class="nav" id="nav">
+  <div class="progress" id="progress"></div>
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Zeliha Kaner">
+    <a class="brand" href="#hero" aria-label="Zeliha Kaner">
       <b>Zeliha Kaner</b><em>//</em><span data-t="brandRole"></span>
     </a>
     <nav class="nav-links" id="navLinks" aria-label="Ana menü">
@@ -69,6 +85,7 @@
 <nav class="scroll-dots" id="scrollDots" aria-hidden="true"></nav>
 
 <main id="top">
+  <div class="intro-space" id="introSpace" aria-hidden="true"></div>
   <section class="hero" id="hero">
     <svg class="ribbons" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
       <g>
@@ -96,6 +113,8 @@
       <div class="wrap bento" id="bento"></div>
     </div>
   </section>
+
+  <div class="marquee" id="marquee" aria-hidden="true"><div class="track" id="marqueeTrack"></div></div>
 
   <section class="band" id="about-band">
     <div class="wrap band-grid" id="band"></div>
