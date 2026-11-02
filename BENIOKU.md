@@ -1,3 +1,21 @@
+# v11 — Kontrastlı renkler, neon parıltılar, her yerde sinir ağı ⚡
+
+- 🎨 **Renkler artık birbirine yakın değil:** koyu çikolata kahve · kırık beyaz ·
+  canlı yeşim yeşili · canlı gül pembesi · karamel. Koyu ve açık modda aynı aile,
+  ama tonlar net şekilde ayrışıyor.
+- 🔤 **Daha okunaklı yazı:** başlıklar ince Cormorant yerine daha dolgun **Fraunces**;
+  gövde metni biraz büyüdü, menü ve küçük etiketler kalınlaştı.
+- ✨ **Neon parıltılar geri döndü ve çoğaldı:** ışık izleri ikili/üçlü **örgü gibi
+  birbirine dolanarak** akıyor, kafaları yaklaşınca aralarında ışık köprüsü ve
+  kıvılcım çıkıyor, imlece doğru bükülüyorlar. Boş bir yere tıklayınca oradan
+  kıvılcım patlaması + yeni ışıklar çıkıyor. Kart kenarlarında neon ışık dolaşıyor.
+- 🧠 **Daha çok sinir ağı:** bütün sitenin arkasında yaşayan bir nöron ağı var —
+  sinyaller düğümden düğüme zincirleme akıyor, imlecin yakınındaki bağlantılar
+  yanıyor, ışık izleri geçerken nöronları ateşliyor. Giriş ekranında da görünüyor.
+  Baştaki ağ daha büyük (6 katman) ve daha yoğun sinyalli.
+
+---
+
 # v10 — Giriş ekranı, sinir ağı ve ZK logosu 🧠
 
 - 👋 **Hoş geldiniz ekranı:** Site açılınca ZK logosu çizilir, "Hoş geldiniz" harf harf
