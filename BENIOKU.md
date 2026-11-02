@@ -1,3 +1,39 @@
+# v9 — Sıfırdan yeni tasarım: cam, parıltı ve akan kod ✨
+
+Site, tasarlattığın iki videoya göre **baştan** kuruldu.
+
+**Renk paleti (her iki modda aynı aile): kahverengi · beyaz · yeşil · pembe**
+- 🌙 **Koyu mod:** espresso kahve zemin, krem/beyaz yazı, adaçayı yeşili vurgu,
+  üçüncü renk olarak pudra pembe (kartlar, yıllar, parıltılar).
+- ☀️ **Açık mod:** beyaz/krem zemin, kahve yazı, aynı yeşil ve pembe.
+- Ortadaki "Ne yapıyorum" şeridi her zaman ters temada durur (koyuda krem, açıkta kahve).
+
+**Hareket**
+- Sağda yavaşça dönen **3B akışkan form** (WebGL): bakır-kahve metal + pembe/yeşil
+  yanardöner cam. Fareyi oynatınca hafifçe döner, iletişim bölümünde tekrar belirir.
+- Başlığın altında satır numaralı, harf harf **yazılan kod akışı**.
+- Ekranda süzülen **parıltı izleri** (yeşil ve pembe kuyruklu yıldızlar + kıvılcımlar);
+  bölümler açıldıkça ve tema değişince tetiklenir.
+- Tema butonu: tıkladığın noktadan **dairesel açılan geçiş** + parıltı patlaması.
+- Yüzen cam küpler, kartların kenarında dolaşan ışık, kayarak beliren bölümler.
+- Erişilebilirlik ayarında "hareketi azalt" açıksa animasyonlar kapanır.
+
+**İçerik** (hepsi korunuyor, TR/EN çift dil): projeler (tıklayınca detay penceresi),
+deneyim, yetkinlikler, hikâye + yolculuk, eğitim, blog, iletişim formu (Netlify Forms),
+CV indirme. Eski `#/project/...` ve `#/post/...` linkleri çalışmaya devam ediyor.
+
+**Dosya yapısı:** `index.html` (içerik verisi en altta `zk-data` bloğunda),
+`assets/site.css`, `assets/site.js`, görseller ve CV `assets/` içinde.
+Sayfa 1.6 MB'tan ~40 KB'a indi.
+
+⚠️ **Not:** Eski admin paneli ve sohbet asistanı bu sürümde yok. Metinleri
+`index.html` içindeki `zk-data` bloğundan düzenleyebilirsin. İstersen ikisini yeni
+tasarıma uygun şekilde geri ekleyebilirim (eski hâli git geçmişinde duruyor).
+
+**Yükleme:** Klasörün tamamını (index.html + assets/ + _redirects) Netlify'a sürükle.
+
+---
+
 # v7 + v8 — Tek sayfa akış, fotoğrafların ve yeni anlatım 📸
 
 **Tek sayfa oldu.** Menüdeki linkler artık ayrı sayfaya gitmiyor, aynı sayfada ilgili
