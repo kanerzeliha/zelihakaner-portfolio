@@ -1,3 +1,18 @@
+# v12 — Pastel ama kontrastlı palet, etkileşimli sinir ağı, daha hareketli giriş 🌸
+
+- 🎨 **Palet:** neon yerine yumuşak pastel tonlar — nane-adaçayı yeşili, pudra pembe,
+  karamel, krem beyaz; zemin derin kakao kahve. Tonlar soft ama birbirinden net ayrışıyor.
+- 🧠 **Sinir ağı büyüdü ve fareye tepki veriyor:** üzerine gelince nöron ve bağlantıları
+  yanıyor; tıklayınca o noktadan ağ ateşleniyor, halkalar yayılıyor, kıvılcım çıkıyor.
+- ✨ **Daha çok ışıltı:** ışık izleri iki kat sık, daha çok kıvılcım, pastel renkli parlama.
+- 👋 **Giriş ekranı:** süzülen pastel ışık bulutları, yükselen parçacıklar, ZK'nın
+  etrafında dönen yörüngeler, kendi kendine yazılan alt başlık, üzerine gelince zıplayan
+  harfler; "Veri / Zekâ / Tasarım" kelimelerinin arkasında kaydırdıkça çizilen grafik,
+  sinir ağı ve tasarım eğrisi; son cümle kelime kelime yanıyor, perde açılırken
+  ortadan ışık izleri fışkırıyor.
+
+---
+
 # v11 — Kontrastlı renkler, neon parıltılar, her yerde sinir ağı ⚡
 
 - 🎨 **Renkler artık birbirine yakın değil:** koyu çikolata kahve · kırık beyaz ·
