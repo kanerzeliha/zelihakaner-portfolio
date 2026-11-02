@@ -1,3 +1,71 @@
+# v15 — Bölümler arası "kutu açılma" geçişleri 📦
+
+- Renkli bölümler (nane "Ne yapıyorum", pembe Yetkinlikler/Deneyim, kahve Blog,
+  karamel İletişim) ekrana girerken ortada küçük yuvarlak köşeli bir **kutu** olarak
+  başlıyor; kaydırdıkça büyüyüp tam genişliğe açılıyor ve yeni sayfayı oluşturuyor.
+- Beyaz bölümler (Projeler, Hakkımda) aşağıdan hafifçe yükselip küçükten büyüyerek yerine oturuyor.
+
+---
+
+# v14 — Soft renkler, tül gibi ışıklar, iki sütunlu giriş 🤍
+
+- 🤍 **Beyaz + kahve ana renk;** nane, pembe ve karamel artık çok açık, soluk tonlar.
+  Butonlar kahve.
+- 🌫️ **Işık izleri tül gibi:** yuvarlak "kafa" yok; ince ince ipliklerden oluşan, iki ucu
+  incelen yarı saydam geniş bir şerit. 2-3 kat daha yavaş ve daha seyrek.
+  **Sayfanın en üstündeyken (başlık kısmı) hiç akmıyor.**
+- 🧠 **Giriş iki sütun:** başlık, yazı ve kod tamamen solda; sağda ekranın kenarına kadar
+  uzanan büyük sinir ağı şeması (üzerine gel/tıkla ile etkileşimli).
+
+---
+
+# v13 — Beyaz zemin, dolu renk blokları, net kenarlar 🎨
+
+- ⚪ **Zemin bembeyaz** (site varsayılan olarak beyaz açılır; ay ikonuyla koyu moda geçilir).
+- 🚫 **Saydam/cam görünüm ve bulanık ışık bulutları kaldırıldı.**
+- 🟩🟪🟧🟫 **Renkler artık her yerde, dolu bloklar halinde:** "Ne yapıyorum" nane yeşili,
+  Yetkinlikler/Deneyim pembe, blog + kayan yazı + footer kahve, İletişim karamel;
+  kartlar nane / pembe / karamel / kahve.
+- ✏️ **Kenarlar soft ama kontrastlı:** yuvarlak köşeler, ince koyu kahve çerçeve ve
+  kaydırılmış dolu gölge; üzerine gelince kart hafifçe kalkıyor.
+- ✨ **Parıltılar soft ve çok renkli:** nane, pudra pembe, lavanta, tereyağı sarısı,
+  şeftali ve gök mavisi.
+
+---
+
+# v12 — Pastel ama kontrastlı palet, etkileşimli sinir ağı, daha hareketli giriş 🌸
+
+- 🎨 **Palet:** neon yerine yumuşak pastel tonlar — nane-adaçayı yeşili, pudra pembe,
+  karamel, krem beyaz; zemin derin kakao kahve. Tonlar soft ama birbirinden net ayrışıyor.
+- 🧠 **Sinir ağı büyüdü ve fareye tepki veriyor:** üzerine gelince nöron ve bağlantıları
+  yanıyor; tıklayınca o noktadan ağ ateşleniyor, halkalar yayılıyor, kıvılcım çıkıyor.
+- ✨ **Daha çok ışıltı:** ışık izleri iki kat sık, daha çok kıvılcım, pastel renkli parlama.
+- 👋 **Giriş ekranı:** süzülen pastel ışık bulutları, yükselen parçacıklar, ZK'nın
+  etrafında dönen yörüngeler, kendi kendine yazılan alt başlık, üzerine gelince zıplayan
+  harfler; "Veri / Zekâ / Tasarım" kelimelerinin arkasında kaydırdıkça çizilen grafik,
+  sinir ağı ve tasarım eğrisi; son cümle kelime kelime yanıyor, perde açılırken
+  ortadan ışık izleri fışkırıyor.
+
+---
+
+# v11 — Kontrastlı renkler, neon parıltılar, her yerde sinir ağı ⚡
+
+- 🎨 **Renkler artık birbirine yakın değil:** koyu çikolata kahve · kırık beyaz ·
+  canlı yeşim yeşili · canlı gül pembesi · karamel. Koyu ve açık modda aynı aile,
+  ama tonlar net şekilde ayrışıyor.
+- 🔤 **Daha okunaklı yazı:** başlıklar ince Cormorant yerine daha dolgun **Fraunces**;
+  gövde metni biraz büyüdü, menü ve küçük etiketler kalınlaştı.
+- ✨ **Neon parıltılar geri döndü ve çoğaldı:** ışık izleri ikili/üçlü **örgü gibi
+  birbirine dolanarak** akıyor, kafaları yaklaşınca aralarında ışık köprüsü ve
+  kıvılcım çıkıyor, imlece doğru bükülüyorlar. Boş bir yere tıklayınca oradan
+  kıvılcım patlaması + yeni ışıklar çıkıyor. Kart kenarlarında neon ışık dolaşıyor.
+- 🧠 **Daha çok sinir ağı:** bütün sitenin arkasında yaşayan bir nöron ağı var —
+  sinyaller düğümden düğüme zincirleme akıyor, imlecin yakınındaki bağlantılar
+  yanıyor, ışık izleri geçerken nöronları ateşliyor. Giriş ekranında da görünüyor.
+  Baştaki ağ daha büyük (6 katman) ve daha yoğun sinyalli.
+
+---
+
 # v10 — Giriş ekranı, sinir ağı ve ZK logosu 🧠
 
 - 👋 **Hoş geldiniz ekranı:** Site açılınca ZK logosu çizilir, "Hoş geldiniz" harf harf
