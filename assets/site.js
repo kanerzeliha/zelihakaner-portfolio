@@ -197,12 +197,12 @@
       : ["AI & Machine Learning", "Computer Vision", "Industrial IoT", "Data Pipelines"];
     var stats = DATA.stats || [];
     $("#bento").innerHTML =
-      '<article class="glass b-work lift" data-reveal>' +
+      '<article class="glass b-work c-pink lift" data-reveal>' +
         '<div class="card-head"><span>' + esc(t("selected")) + '</span><span class="dots3"><i></i><i></i><i></i></span></div>' +
         '<div class="screen"><h3><span>01 / ' + esc(lang === "tr" ? "Akıllı Triyaj" : "Smart Triage") + '</span><small>···</small></h3>' + flow +
         '<div class="row-end"><button class="btn sm" type="button" data-open-project="' + esc(triage.id) + '">' + esc(t("viewCase")) + '</button><span class="dots3"><i></i><i></i><i></i></span></div></div>' +
       "</article>" +
-      '<article class="glass b-core inv lift" data-reveal style="--d:.1s">' +
+      '<article class="glass b-core c-mint lift" data-reveal style="--d:.1s">' +
         '<div class="card-head"><span>' + esc(t("core")) + '</span><span class="dots3"><i></i><i></i><i></i></span></div>' +
         "<ul>" + items.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" +
         '<div class="mini-term" aria-hidden="true"><b>$</b> python train.py<br>epoch 12/12<br>loss 0.214<br>acc  <i>0.595</i><br><b>$</b> docker up<br>api :5000 ✓<br>mqtt ✓</div>' +
@@ -213,8 +213,8 @@
         "</div>" +
       "</article>" +
       '<div class="b-side">' +
-        '<article class="glass b-quote inv lift" data-reveal style="--d:.2s"><div class="card-head"><span>' + esc(t("philosophy")) + '</span></div><p>' + esc(L(DATA.site.philosophy)) + "</p></article>" +
-        '<article class="glass b-status beam lit" data-reveal style="--d:.28s"><div class="card-head"><span>' + esc(t("status")) + '</span><span class="badge-now">' + esc(t("now")) + "</span></div>" +
+        '<article class="glass b-quote c-caramel lift" data-reveal style="--d:.2s"><div class="card-head"><span>' + esc(t("philosophy")) + '</span></div><p>' + esc(L(DATA.site.philosophy)) + "</p></article>" +
+        '<article class="glass b-status c-brown beam lit" data-reveal style="--d:.28s"><div class="card-head"><span>' + esc(t("status")) + '</span><span class="badge-now">' + esc(t("now")) + "</span></div>" +
           '<div class="big">' + esc(t("statusVal")) + "</div>" +
           '<svg viewBox="0 0 200 46" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wavefill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--accent)" stop-opacity=".35"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs><path class="area" id="waveArea"/><path class="wave" id="wavePath"/></svg>' +
           '<div class="meta">' + stats.slice(0, 3).map(function (s) { return "<span><b>" + esc(s.value) + "</b> " + esc(L(s.label)) + "</span>"; }).join("") + "</div>" +
@@ -245,7 +245,7 @@
       ? { "predictive-maintenance": "IoT · Kestirimci bakım", "cv-quality-control": "Görü · Kalite kontrol", "smart-triage": "Sağlık · TÜBİTAK", "process-mining": "Süreç · Optimizasyon" }
       : { "predictive-maintenance": "IoT · Predictive", "cv-quality-control": "Vision · Quality", "smart-triage": "Health · TÜBİTAK", "process-mining": "Process · Optimization" };
     $("#rail").innerHTML = DATA.projects.map(function (p, i) {
-      return '<article class="glass proj lift beam tilt" data-reveal style="--d:' + (i * 0.08) + 's" data-open-project="' + esc(p.id) + '" tabindex="0" role="button" aria-label="' + esc(L(p.title)) + '">' +
+      return '<article class="glass proj lift beam tilt ' + ["c-mint", "c-pink", "c-caramel", "c-brown"][i % 4] + '" data-reveal style="--d:' + (i * 0.08) + 's" data-open-project="' + esc(p.id) + '" tabindex="0" role="button" aria-label="' + esc(L(p.title)) + '">' +
         '<div class="art">' + projArt(p.id) + "</div>" +
         '<div class="body"><span class="meta">' + esc(cats[p.id] || "") + "</span><h3>" + esc(L(p.title)) + "</h3><p>" + esc(L(p.objective)) + "</p>" +
         '<div class="tags">' + (p.tags || []).slice(0, 3).map(function (x) { return '<span class="chip">' + esc(x) + "</span>"; }).join("") + "</div>" +
@@ -262,7 +262,7 @@
         '<div class="chips">' + s.items.map(function (x) { return '<span class="chip">' + esc(x) + "</span>"; }).join("") + "</div></div>";
     }).join("");
     $("#xp").innerHTML = DATA.experience.map(function (e, i) {
-      return '<article class="glass xp lift tilt' + (i === 0 ? " beam" : "") + '" data-open-xp="' + i + '" tabindex="0" role="button" aria-label="' + esc(L(e.role) + " — " + e.company) + '">' +
+      return '<article class="glass xp lift tilt' + (i === 0 ? " beam c-brown" : "") + '" data-open-xp="' + i + '" tabindex="0" role="button" aria-label="' + esc(L(e.role) + " — " + e.company) + '">' +
         '<div class="logo"><img src="' + esc(e.logo) + '" alt="" loading="lazy"></div>' +
         (e.current ? '<span class="badge-now">' + esc(t("now")) + "</span>" : "") +
         "<h3>" + esc(L(e.role)) + '</h3><span class="co">' + esc(e.company) + '</span><span class="when">' + esc(period(e)) + " · " + esc(L(e.location)) + "</span>" +
@@ -284,7 +284,7 @@
       '<button class="link-more" type="button" id="openStory">' + esc(t("readStory")) + " " + I.arrow.replace("<svg", '<svg width="16" height="16"') + "</button></div>" +
       '<div class="stats">' + (DATA.stats || []).map(function (s) {
         var m = String(s.value).match(/^(\d+)(.*)$/);
-        return '<div class="glass stat"><b data-count="' + (m ? m[1] : "") + '" data-suffix="' + esc(m ? m[2] : "") + '">' + esc(s.value) + "</b><span>" + esc(L(s.label)) + "</span></div>";
+        return '<div class="glass stat ' + ["c-mint", "c-pink", "c-caramel", "c-brown"][arguments[1] % 4] + '"><b data-count="' + (m ? m[1] : "") + '" data-suffix="' + esc(m ? m[2] : "") + '">' + esc(s.value) + "</b><span>" + esc(L(s.label)) + "</span></div>";
       }).join("") + "</div>" +
       '<p class="kicker">' + esc(t("journey")) + '</p><div class="timeline">' + (DATA.timeline || []).map(function (x) {
         return '<div class="tl"><b>' + esc(x.year) + "</b>" + esc(L(x.text)) + "</div>";
@@ -297,7 +297,7 @@
   function renderBlog() {
     var fmt = function (d) { try { return new Date(d + "T12:00:00").toLocaleDateString(lang === "tr" ? "tr-TR" : "en-GB", { day: "numeric", month: "long", year: "numeric" }); } catch (e) { return d; } };
     $("#posts").innerHTML = (DATA.blog || []).map(function (p, i) {
-      return '<article class="glass post lift beam tilt" data-reveal style="--d:' + (i * 0.1) + 's" data-open-post="' + esc(p.id) + '" tabindex="0" role="button">' +
+      return '<article class="glass post lift beam tilt ' + (i % 2 ? "c-mint" : "c-pink") + '" data-reveal style="--d:' + (i * 0.1) + 's" data-open-post="' + esc(p.id) + '" tabindex="0" role="button">' +
         "<time>" + esc(fmt(p.date)) + "</time><h3>" + esc(L(p.title)) + "</h3><p>" + esc(L(p.excerpt)) + '</p><span class="arrow">' + esc(t("readPost")) + I.arrow + "</span></article>";
     }).join("");
   }
@@ -642,6 +642,14 @@
      Drifting neurons link up when close; signals hop node to
      node (chain reactions); links near the cursor light up.
      ========================================================= */
+  /* Soft pastel sparkle palette: mint, blush, lavender, butter, peach, sky */
+  var SPARK = {
+    light: [[120, 200, 160], [238, 140, 170], [168, 150, 228], [232, 190, 90], [242, 160, 112], [118, 180, 230]],
+    dark: [[170, 230, 200], [248, 182, 204], [200, 188, 245], [246, 220, 150], [250, 196, 160], [170, 210, 245]]
+  };
+  function sparkPal() { return SPARK[root.getAttribute("data-theme") === "dark" ? "dark" : "light"]; }
+  function pick() { var P = sparkPal(); return P[Math.floor(Math.random() * P.length)]; }
+
   var mesh = (function () {
     var cv = document.createElement("canvas"); cv.id = "mesh"; cv.setAttribute("aria-hidden", "true");
     document.body.insertBefore(cv, $("#streaks"));
@@ -664,7 +672,7 @@
       W = innerWidth; H = innerHeight; cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       D = small ? 120 : 160;
       var N = Math.round(Math.min(small ? 38 : 80, W * H / (small ? 9000 : 15000)));
-      while (nodes.length < N) nodes.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25, f: 0, k: Math.random() < .22 ? "p" : Math.random() < .25 ? "b" : "g" });
+      while (nodes.length < N) nodes.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25, f: 0, ci: Math.floor(Math.random() * 6) });
       nodes.length = N;
     }
     function near(n) {
@@ -677,7 +685,7 @@
       if (depth > 5) return;
       var nb = near(n); if (!nb.length) return;
       var k = Math.min(nb.length, 1 + (Math.random() < .5 ? 1 : 0));
-      for (var i = 0; i < k; i++) sig.push({ a: n, b: nb[Math.floor(Math.random() * nb.length)], t: 0, sp: 1.6 + Math.random(), d: depth, c: n.k === "p" ? col.p : col.g });
+      for (var i = 0; i < k; i++) sig.push({ a: n, b: nb[Math.floor(Math.random() * nb.length)], t: 0, sp: 1.6 + Math.random(), d: depth, c: sparkPal()[n.ci] });
     }
     function poke(x, y, r) {
       r = r || 70;
@@ -712,7 +720,7 @@
           d = Math.sqrt(d); al = (1 - d / D);
           var mx = (a.x + b.x) / 2 - px, my = (a.y + b.y) / 2 - py;
           hot = Math.max(0, 1 - Math.sqrt(mx * mx + my * my) / 190);
-          ctx.strokeStyle = hot > .02 ? rgba(i % 3 ? col.g : col.p, al * (.12 + hot * .8)) : rgba(col.muted, al * (col.dark ? .16 : .2));
+          ctx.strokeStyle = hot > .02 ? rgba(sparkPal()[i % 6], al * (.15 + hot * .8)) : rgba(col.muted, al * (col.dark ? .16 : .2));
           ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
         }
       }
@@ -727,7 +735,7 @@
       });
       // neurons
       nodes.forEach(function (n) {
-        var c = n.k === "p" ? col.p : n.k === "b" ? col.brown : col.g;
+        var c = sparkPal()[n.ci];
         if (n.f > .02) {
           ctx.fillStyle = rgba(c, .16 * n.f); ctx.beginPath(); ctx.arc(n.x, n.y, 9 * n.f + 3, 0, Math.PI * 2); ctx.fill();
           ctx.fillStyle = rgba(c, .35 + n.f * .65); ctx.beginPath(); ctx.arc(n.x, n.y, 2 + n.f * 2.4, 0, Math.PI * 2); ctx.fill();
@@ -803,7 +811,7 @@
       var n = opt.n || (Math.random() < .55 ? 2 : Math.random() < .5 ? 3 : 1);
       var t0 = performance.now(), d = dur || 2000 + Math.random() * 1400, amp = n > 1 ? 26 + Math.random() * 30 : 0, turns = 3 + Math.random() * 3;
       for (var i = 0; i < n; i++) {
-        comets.push({ p: [a, c1, c2, b], t0: t0 + i * 40, dur: d, amp: amp, turns: turns, ph: i * Math.PI * 2 / n, pink: n > 1 ? i % 2 === 1 : Math.random() < .4, w: 1.4 + Math.random() * 1.2, fade: 1, h: null });
+        comets.push({ p: [a, c1, c2, b], t0: t0 + i * 40, dur: d, amp: amp, turns: turns, ph: i * Math.PI * 2 / n, col: pick(), w: 1.4 + Math.random() * 1.2, fade: 1, h: null });
       }
       if (!running) { running = true; requestAnimationFrame(loop); }
     }
@@ -814,7 +822,7 @@
     function burstAt(x, y, n) {
       for (var i = 0; i < n; i++) {
         var a = Math.random() * Math.PI * 2, s = .6 + Math.random() * 3;
-        sparks.push({ p: i % 2 === 0, x: x, y: y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, t0: performance.now(), life: 600 + Math.random() * 900, r: .8 + Math.random() * 1.8 });
+        sparks.push({ c: pick(), x: x, y: y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, t0: performance.now(), life: 600 + Math.random() * 900, r: .8 + Math.random() * 1.8 });
       }
       if (!running) { running = true; requestAnimationFrame(loop); }
     }
@@ -827,7 +835,7 @@
         var c = comets[i], k = (now - c.t0) / c.dur;
         if (k < 0) continue;
         k = Math.min(1, k);
-        var e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, G = c.pink ? glowP : glow;
+        var e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2, G = c.col;
         if (k >= 1) c.fade -= .05;
         var tr = [], span = .24, N = 30;
         for (var q = 0; q <= N; q++) { var tt = e - span + span * q / N; if (tt >= 0 && tt <= 1) tr.push(pos(c, tt)); }
@@ -841,15 +849,15 @@
             var path = function () { ctx.beginPath(); ctx.moveTo(tr[s0][0], tr[s0][1]); for (var q2 = s0 + 1; q2 <= s1; q2++) ctx.lineTo(tr[q2][0], tr[q2][1]); ctx.stroke(); };
             ctx.strokeStyle = rgba(G, .12 * f * fa); ctx.lineWidth = c.w * (6 + f * 8); path();
             ctx.strokeStyle = rgba(G, .75 * f * fa); ctx.lineWidth = c.w * (0.8 + f * 1.8); path();
-            ctx.strokeStyle = rgba(glow2, .85 * f * f * fa); ctx.lineWidth = c.w * (0.3 + f * .6); path();
+            ctx.strokeStyle = rgba(dark ? glow2 : [255, 255, 255], .85 * f * f * fa); ctx.lineWidth = c.w * (0.3 + f * .6); path();
           }
         }
         if (k < 1 && tr.length) {
           var h = tr[tr.length - 1]; c.h = h; heads.push(c);
           var g = ctx.createRadialGradient(h[0], h[1], 0, h[0], h[1], 26);
-          g.addColorStop(0, rgba(glow2, 1)); g.addColorStop(.2, rgba(G, .8)); g.addColorStop(1, rgba(G, 0));
+          g.addColorStop(0, rgba(dark ? glow2 : G, 1)); g.addColorStop(.2, rgba(G, .7)); g.addColorStop(1, rgba(G, 0));
           ctx.fillStyle = g; ctx.beginPath(); ctx.arc(h[0], h[1], 26, 0, Math.PI * 2); ctx.fill();
-          if (Math.random() < .8) sparks.push({ p: c.pink, x: h[0], y: h[1], vx: (Math.random() - .5) * 1.6, vy: (Math.random() - .5) * 1.6 + .3, t0: now, life: 500 + Math.random() * 900, r: .6 + Math.random() * 1.6 });
+          if (Math.random() < .8) sparks.push({ c: Math.random() < .5 ? c.col : pick(), x: h[0], y: h[1], vx: (Math.random() - .5) * 1.6, vy: (Math.random() - .5) * 1.6 + .3, t0: now, life: 500 + Math.random() * 900, r: .6 + Math.random() * 1.6 });
           if (Math.random() < .25) mesh.poke(h[0], h[1], 60);
         }
         if (k >= 1 && c.fade <= 0) comets.splice(i, 1);
@@ -860,9 +868,9 @@
         if (dd < 110) {
           var s = 1 - dd / 110;
           var qx = (A[0] + B[0]) / 2 + (Math.random() - .5) * 30 * s, qy = (A[1] + B[1]) / 2 + (Math.random() - .5) * 30 * s;
-          ctx.strokeStyle = rgba(glowP, s * .25); ctx.lineWidth = 8 * s;
+          ctx.strokeStyle = rgba(heads[b].col, s * .3); ctx.lineWidth = 8 * s;
           ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.quadraticCurveTo(qx, qy, B[0], B[1]); ctx.stroke();
-          ctx.strokeStyle = rgba(glow2, s * .9); ctx.lineWidth = 1 + s * 1.2;
+          ctx.strokeStyle = rgba(heads[a].col, s * .9); ctx.lineWidth = 1 + s * 1.2;
           ctx.beginPath(); ctx.moveTo(A[0], A[1]); ctx.quadraticCurveTo(qx, qy, B[0], B[1]); ctx.stroke();
           if (dd < 40 && Math.random() < .4) burstAt((A[0] + B[0]) / 2, (A[1] + B[1]) / 2, 4);
         }
@@ -871,8 +879,8 @@
         var p = sparks[si], al = 1 - (now - p.t0) / p.life;
         if (al <= 0) { sparks.splice(si, 1); continue; }
         p.x += p.vx; p.y += p.vy; p.vx *= .965; p.vy *= .965;
-        var tw = .5 + .5 * Math.sin(now * .025 + si), C = p.p ? glowP : glow;
-        ctx.fillStyle = rgba(glow2, al * (.5 + .5 * tw));
+        var tw = .5 + .5 * Math.sin(now * .025 + si), C = p.c || glow;
+        ctx.fillStyle = rgba(dark ? glow2 : C, al * (.5 + .5 * tw));
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r * (0.5 + al * .6), 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = rgba(C, al * .3); ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 3.5, 0, Math.PI * 2); ctx.fill();
       }
@@ -1116,8 +1124,8 @@
   function setTheme(next, x, y) {
     var apply = function () {
       root.setAttribute("data-theme", next);
-      store.set("zk-theme", next);
-      $('meta[name="theme-color"]').setAttribute("content", next === "light" ? "#fffaf4" : "#1b1411");
+      store.set("zk-theme2", next);
+      $('meta[name="theme-color"]').setAttribute("content", next === "light" ? "#ffffff" : "#2f2019");
       streaks.readColors(); mesh.readColors();
       neural.readColors(); neural.kick();
     };

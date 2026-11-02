@@ -1,3 +1,17 @@
+# v13 — Beyaz zemin, dolu renk blokları, net kenarlar 🎨
+
+- ⚪ **Zemin bembeyaz** (site varsayılan olarak beyaz açılır; ay ikonuyla koyu moda geçilir).
+- 🚫 **Saydam/cam görünüm ve bulanık ışık bulutları kaldırıldı.**
+- 🟩🟪🟧🟫 **Renkler artık her yerde, dolu bloklar halinde:** "Ne yapıyorum" nane yeşili,
+  Yetkinlikler/Deneyim pembe, blog + kayan yazı + footer kahve, İletişim karamel;
+  kartlar nane / pembe / karamel / kahve.
+- ✏️ **Kenarlar soft ama kontrastlı:** yuvarlak köşeler, ince koyu kahve çerçeve ve
+  kaydırılmış dolu gölge; üzerine gelince kart hafifçe kalkıyor.
+- ✨ **Parıltılar soft ve çok renkli:** nane, pudra pembe, lavanta, tereyağı sarısı,
+  şeftali ve gök mavisi.
+
+---
+
 # v12 — Pastel ama kontrastlı palet, etkileşimli sinir ağı, daha hareketli giriş 🌸
 
 - 🎨 **Palet:** neon yerine yumuşak pastel tonlar — nane-adaçayı yeşili, pudra pembe,
