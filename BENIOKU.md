@@ -1,3 +1,12 @@
+# v15 — Bölümler arası "kutu açılma" geçişleri 📦
+
+- Renkli bölümler (nane "Ne yapıyorum", pembe Yetkinlikler/Deneyim, kahve Blog,
+  karamel İletişim) ekrana girerken ortada küçük yuvarlak köşeli bir **kutu** olarak
+  başlıyor; kaydırdıkça büyüyüp tam genişliğe açılıyor ve yeni sayfayı oluşturuyor.
+- Beyaz bölümler (Projeler, Hakkımda) aşağıdan hafifçe yükselip küçükten büyüyerek yerine oturuyor.
+
+---
+
 # v14 — Soft renkler, tül gibi ışıklar, iki sütunlu giriş 🤍
 
 - 🤍 **Beyaz + kahve ana renk;** nane, pembe ve karamel artık çok açık, soluk tonlar.

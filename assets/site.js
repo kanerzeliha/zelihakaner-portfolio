@@ -566,10 +566,34 @@
       sections.forEach(function (id) { var el = document.getElementById(id); if (el && el.getBoundingClientRect().top < vh * .45) cur = id; });
       $$("#scrollDots a").forEach(function (a) { a.classList.toggle("active", a.getAttribute("data-s") === cur); });
       $$(".nav-links a").forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + cur); });
+      if (!REDUCE) sectionFx(vh);
       if (!REDUCE) floaters.forEach(function (f) {
         var r = f.parentNode.getBoundingClientRect();
         f.style.transform = "translate3d(0," + ((r.top + r.height / 2 - vh / 2) * -f._depth).toFixed(1) + "px,0)";
       });
+    });
+  }
+  /* ---- section transitions: coloured sections grow out of a small box,
+          white sections zoom up into place ---- */
+  function sectionFx(vh) {
+    var vw = innerWidth, small = vw < 820;
+    $$(".band.on-mint, #systems, #blog, #contact").forEach(function (sec) {
+      var r = sec.getBoundingClientRect();
+      if (r.top > vh || r.bottom < 0) return;
+      var k = Math.max(0, Math.min(1, (vh - r.top) / (vh * .8)));
+      k = 1 - Math.pow(1 - k, 3);
+      var x = (1 - k) * (small ? 18 : Math.max(24, vw * .22)), t = (1 - k) * (small ? 30 : 90), rad = (1 - k) * (small ? 28 : 56);
+      sec.style.clipPath = k >= .999 ? "" : "inset(" + t.toFixed(1) + "px " + x.toFixed(1) + "px 0px " + x.toFixed(1) + "px round " + rad.toFixed(1) + "px)";
+      var w = sec.querySelector(".wrap");
+      if (w) { w.style.transform = k >= .999 ? "" : "translateY(" + ((1 - k) * 60).toFixed(1) + "px) scale(" + (.94 + k * .06).toFixed(4) + ")"; w.style.opacity = (.3 + k * .7).toFixed(3); }
+    });
+    $$("#work > .wrap, #about > .wrap").forEach(function (w) {
+      var r = w.parentNode.getBoundingClientRect();
+      if (r.top > vh || r.bottom < 0) return;
+      var k = Math.max(0, Math.min(1, (vh - r.top) / (vh * .7)));
+      k = 1 - Math.pow(1 - k, 3);
+      w.style.transform = k >= .999 ? "" : "translateY(" + ((1 - k) * 80).toFixed(1) + "px) scale(" + (.9 + k * .1).toFixed(4) + ")";
+      w.style.transformOrigin = "50% 0";
     });
   }
   window.addEventListener("scroll", onScroll, { passive: true });
