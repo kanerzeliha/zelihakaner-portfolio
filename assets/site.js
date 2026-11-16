@@ -10,6 +10,9 @@
   "use strict";
 
   var DATA = JSON.parse(document.getElementById("zk-data").textContent);
+  // Yönetici panelinden kaydedilen taslak (yalnızca bu tarayıcıda)
+  try { var zkDraft = localStorage.getItem("zk-draft"); if (zkDraft) DATA = JSON.parse(zkDraft); } catch (e) {}
+  var FLAT = true;   // düz arka plan: arka plan ağı ve ışık şeritleri kapalı
   var root = document.documentElement;
   var REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -455,6 +458,11 @@
   /* ---------------- Routing (old #/ links) ---------------- */
   function route() {
     var h = location.hash, m;
+    if (h === "#/admin") {
+      if (window.ZKAdmin) { window.ZKAdmin.open(DATA); return; }
+      var sc = document.createElement("script"); sc.src = "assets/admin.js"; sc.onload = function () { window.ZKAdmin.open(DATA); }; document.head.appendChild(sc);
+      return;
+    }
     if ((m = h.match(/^#\/project\/(.+)$/))) openProject(decodeURIComponent(m[1]));
     else if ((m = h.match(/^#\/post\/(.+)$/))) openPost(decodeURIComponent(m[1]));
     else if ((m = h.match(/^#\/(about|projects|blog|contact)$/))) {
@@ -668,8 +676,8 @@
      ========================================================= */
   /* Soft pastel sparkle palette: mint, blush, lavender, butter, peach, sky */
   var SPARK = {
-    light: [[22, 20, 15], [22, 20, 15], [107, 102, 92], [22, 20, 15], [200, 69, 43], [107, 102, 92]],
-    dark: [[243, 240, 233], [243, 240, 233], [154, 149, 138], [243, 240, 233], [239, 106, 76], [154, 149, 138]]
+    light: [[43, 28, 20], [43, 28, 20], [107, 102, 92], [43, 28, 20], [47, 111, 85], [107, 102, 92]],
+    dark: [[243, 240, 233], [243, 240, 233], [154, 149, 138], [243, 240, 233], [140, 199, 166], [154, 149, 138]]
   };
   function sparkPal() { return SPARK[root.getAttribute("data-theme") === "dark" ? "dark" : "light"]; }
   function pick() { var P = sparkPal(); return P[Math.floor(Math.random() * P.length)]; }
@@ -776,7 +784,7 @@
       step(acc); acc = 0; draw();
       requestAnimationFrame(frame);
     }
-    function setRun() { var on = !document.hidden && !REDUCE; if (on && !running) { running = true; last = 0; requestAnimationFrame(frame); } if (!on) running = false; }
+    function setRun() { var on = !document.hidden && !REDUCE && !FLAT; if (on && !running) { running = true; last = 0; requestAnimationFrame(frame); } if (!on) running = false; }
     readColors(); size();
     window.addEventListener("resize", function () { size(); if (REDUCE) draw(); });
     window.addEventListener("pointermove", function (e) { px = e.clientX; py = e.clientY; }, { passive: true });
@@ -824,7 +832,7 @@
       return h;
     }
     function spawn(a, b, dur, opt) {
-      if (REDUCE) return;
+      if (REDUCE || FLAT) return;
       opt = opt || {};
       var r = function (n) { return (Math.random() - .5) * n; };
       a = a || (Math.random() < .5 ? [-60, H * (.15 + Math.random() * .75)] : [W * Math.random(), H + 60]);
@@ -843,6 +851,7 @@
       spawn([-40, y + (Math.random() - .5) * 200], [W + 40, rect.top + Math.random() * rect.height], 2100);
     }
     function burstAt(x, y, n) {
+      if (FLAT) return;
       for (var i = 0; i < n; i++) {
         var a = Math.random() * Math.PI * 2, s = .6 + Math.random() * 3;
         sparks.push({ c: pick(), x: x, y: y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, t0: performance.now(), life: 600 + Math.random() * 900, r: .8 + Math.random() * 1.8 });
@@ -992,7 +1001,7 @@
       DPR = Math.min(devicePixelRatio || 1, 2);
       var r = host.getBoundingClientRect(); W = r.width; H = r.height;
       cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR); ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      S = Math.min(W / 2.95, H / 1.75); cx = W * .5; cy = H * (small ? .5 : .44);
+      S = Math.min(W / 3.0, H / 1.78); cx = W * .5; cy = H * .5;
     }
 
     /* ---------- forward pass ---------- */
@@ -1095,14 +1104,14 @@
 
       // annotation
       var fa = rgba(col.muted, .95), tr = lang === "tr";
-      text("x", [-1.3, .56, 0], "center", fa); text("h", [-.88, .7, 0], "center", fa); text("ŷ", [-.46, .56, 0], "center", fa);
+      text("x", [-1.3, .56, 0], "center", fa); text("h", [-.88, .6, 0], "center", fa); text("ŷ", [-.46, .56, 0], "center", fa);
       ctx.strokeStyle = rgba(ink, .3); ctx.lineWidth = 1;
       [[-1.36, -.4], [-.02, 1.38]].forEach(function (b) {
-        var a = P([b[0], .84, 0]), c = P([b[1], .84, 0]);
+        var a = P([b[0], .7, 0]), c = P([b[1], .7, 0]);
         ctx.beginPath(); ctx.moveTo(a[0], a[1] - 5); ctx.lineTo(a[0], a[1]); ctx.lineTo(c[0], c[1]); ctx.lineTo(c[0], c[1] - 5); ctx.stroke();
       });
-      text(tr ? "YAPAY SİNİR AĞI" : "ARTIFICIAL NETWORK", [-.88, .95, 0], "center", fa, small ? 9 : 10.5);
-      text(tr ? "BİYOLOJİK NÖRON" : "BIOLOGICAL NEURON", [.68, .95, 0], "center", fa, small ? 9 : 10.5);
+      text(tr ? "YAPAY SİNİR AĞI" : "ARTIFICIAL NETWORK", [-.88, .8, 0], "center", fa, small ? 9 : 10.5);
+      text(tr ? "BİYOLOJİK NÖRON" : "BIOLOGICAL NEURON", [.68, .8, 0], "center", fa, small ? 9 : 10.5);
       if (!small) {
         text("ŷ = σ(Wx + b)", [-1.36, -.72, 0], "left", rgba(ink, .85), 12);
         text("τ · dV/dt = −V + I(t)", [.22, -.72, 0], "left", rgba(ink, .85), 12);
@@ -1168,7 +1177,7 @@
     var apply = function () {
       root.setAttribute("data-theme", next);
       store.set("zk-theme2", next);
-      $('meta[name="theme-color"]').setAttribute("content", next === "light" ? "#f7f5f0" : "#11100e");
+      $('meta[name="theme-color"]').setAttribute("content", next === "light" ? "#faf7f2" : "#19110d");
       streaks.readColors(); mesh.readColors();
       neural.readColors(); neural.kick();
     };
