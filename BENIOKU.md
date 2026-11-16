@@ -1,3 +1,17 @@
+# v16 — Sade ve profesyonel: tek vurgu rengi, teknik çizim havası
+
+- **Renk:** nötr kâğıt/mürekkep tonları + tek vurgu rengi (kiremit). Açık ve koyu temada
+  aynı sistem; pastel bloklar, kalın çerçeveler ve kaymış gölgeler kalktı.
+- **Kartlar ve butonlar:** ince çizgili, küçük köşeli; etiketler ve menü teknik (mono) yazıyla.
+- **Baştaki sinir ağı:** 17 düğümlü tek bir 3B çizim. Solda yapay sinir ağı (x → h → ŷ),
+  kesikli sinaps bağlantılarıyla sağdaki biyolojik nörona (dendrit, soma, akson, uçlar)
+  bağlanıyor. Sinyal baştan sona tek tek ilerliyor; formüller ve etiketler var.
+  Üzerine gelince düğümün adı çıkıyor, tıklayınca sinyal gönderiyor, kaydırınca dönüyor.
+- **Arka plan ağı** 16 düğüme indi; ışık şeritleri daha seyrek, ince ve tek renk.
+- Fotoğraflar siyah-beyaz, üzerine gelince renkleniyor.
+
+---
+
 # v15 — Bölümler arası "kutu açılma" geçişleri 📦
 
 - Renkli bölümler (nane "Ne yapıyorum", pembe Yetkinlikler/Deneyim, kahve Blog,
